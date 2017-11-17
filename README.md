@@ -1,106 +1,92 @@
-# HMFAYSAL V2
+# The Dinky theme
 
-**[HMFAYSAL V2](http://v2.theevilgenius.tk)** is a two column responsive Jekyll theme by Engineer [Hossain Mohd Faysal](http://hmfaysal.tk) featuring a slide out drawer menu in mobile browsers.
+[![Build Status](https://travis-ci.org/pages-themes/dinky.svg?branch=master)](https://travis-ci.org/pages-themes/dinky) [![Gem Version](https://badge.fury.io/rb/jekyll-theme-dinky.svg)](https://badge.fury.io/rb/jekyll-theme-dinky)
 
-## HMFAYSAL V2 is all about:
+*Dinky is a Jekyll theme for GitHub Pages. You can [preview the theme to see what it looks like](http://pages-themes.github.io/dinky), or even [use it today](#usage).*
 
-* Responsive templates. Looking good on mobile, tablet, and desktop.
-* Gracefully degrading in older browsers. Compatible with Internet Explorer 8+ and all modern browsers. 
-* Minimal embellishments. Content first; other widget nonsense never.
-* Large feature images for posts and pages.
-* Simple and clear permalink structure.
-* [Custom 404 page](http://v2.theevilgenius.tk/404.html) to get you started.
-* Stylesheets for Pygments and Coderay [syntax highlighting](http://v2.theevilgenius.tk/articles/code-highlighting-post/) to make your code examples look snazzy.
+![Thumbnail of dinky](thumbnail.png)
 
-![screenshot of HMFAYSAL V2 theme](http://v2.theevilgenius.tk/images/Jekyll-HMFAYSAL-Theme.jpg)
+## Usage
 
-General notes and suggestions for customizing HMFAYSAL V2 Theme.
+To use the Dinky theme:
 
-## Basic Setup
+1. Add the following to your site's `_config.yml`:
 
-1. [Install Jekyll](http://jekyllrb.com) if you haven't already.
-2. Fork the [Jekyll HMFAYSAL V2 Theme repo](http://github.com/hmfaysal/Jekyll-HMFAYSAL-V2-Theme/)
-3. Clone the repo you just forked to your computer.
-4. Edit `_config.yml` to personalize your site.
-5. Check out the sample posts in `_posts` to see examples for pulling in large feature images, tags, and other YAML data.
-6. Read the documentation below for further customization pointers and documentation.
+    ```yml
+    theme: jekyll-theme-dinky
+    ```
 
-[Demo the Theme](http://v2.theevilgenius.tk)
+2. Optionally, if you'd like to preview your site on your computer, add the following to your site's `Gemfile`:
 
-**Pro-tip:** Delete the `gh-pages` branch after cloning and start fresh by branching off `master`. There is a bunch of garbage in `gh-pages` used for the theme's demo site that I'm guessing you don't want on your site. Also type in `chcp 65001` if the prompt shows UTF-8 or IBM47 error.
+    ```ruby
+    gem "github-pages", group: :jekyll_plugins
+    ```
 
----
 
-## Setup for an Existing Jekyll site
 
-1. Clone the following folders: `_includes`, `_layouts`, `assets`, and `images`.
-2. Clone the following files and personalize content as need: `about.md`, `articles.html`, `index.md`, `feed.xml`, `sitemap.xml`
-3. Set the following variables in your `config.yml` file:
+## Customizing
 
-``` yaml
-title:            Site Title
-description:      Describe your website here.
-disqus_shortname: shortname
-url:              http://your-website.com
+### Configuration variables
 
-# Owner/author information
-owner:
-  name:           Your Name
-  avatar:         avatar.jpg
-  bio:            "Your bio goes here. It shouldn't be super long but a good two sentences or two should suffice."
-  email:          you@email.com
-  # Social networking links used in footer. Update and remove as you like.
-  twitter:        
-  facebook:       
-  github:         
-  stackexchange:  
-  linkedin:       
-  instagram:      
-  flickr:         
-  tumblr:         
-  hmfaysalsocial:	
-  # For Google Authorship https://plus.google.com/authorship
-  google_plus:    
+Dinky will respect the following variables, if set in your site's `_config.yml`:
 
-# Analytics and webmaster tools stuff goes here
-google_analytics:   
-google_verify:      
-# https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
-bing_verify:         
-
-# Links to include in top navigation
-# For external links add external: true
-links:
-  - title: Home
-    url: /
-  - title: About
-    url: /about/
-  - title: Articles
-    url: /articles/
-  - title: Setup
-    url: /theme-setup/
-  - title: T-Details
-    url: /technical-details/
-  - title: The Evil-Genius
-    url: http://www.theevilgenius.tk/
-    external: true
-
-# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-timezone:    America/New_York
-future:      true
-pygments:    true
-markdown:    kramdown
-
+```yml
+title: [The title of your site]
+description: [A short description of your site's purpose]
 ```
 
----
+Additionally, you may choose to set the following optional variables:
 
-## Questions?
+```yml
+show_downloads: ["true" or "false" to indicate whether to provide a download URL]
+google_analytics: [Your Google Analytics tracking ID]
+```
 
-Having a problem getting something to work or want to know why I setup something in a certain way? Ping me on Twitter [@hmfaysal](http://twitter.com/hmfaysal) or [file a GitHub Issue](https://github.com/hmfaysal/Jekyll-HMFAYSAL-V2-Theme/issues/new). And if you make something cool with this theme feel free to let me know.
+### Stylesheet
 
----
+If you'd like to add your own custom styles:
 
-## License
+1. Create a file called `/assets/css/style.scss` in your site
+2. Add the following content to the top of the file, exactly as shown:
+    ```scss
+    ---
+    ---
 
-This theme is free and open source software, distributed under the [GNU General Public License](http://v2.theevilgenius.tk/LICENSE) version 2 or later. So feel free to use this Jekyll theme on your site without linking back to me or including a disclaimer. 
+    @import "{{ site.theme }}";
+    ```
+3. Add any custom CSS (or Sass, including imports) you'd like immediately after the `@import` line
+
+### Layouts
+
+If you'd like to change the theme's HTML layout:
+
+1. [Copy the original template](https://github.com/pages-themes/dinky/blob/master/_layouts/default.html) from the theme's repository<br />(*Pro-tip: click "raw" to make copying easier*)
+2. Create a file called `/_layouts/default.html` in your site
+3. Paste the default layout content copied in the first step
+4. Customize the layout as you'd like
+
+## Roadmap
+
+See the [open issues](https://github.com/pages-themes/dinky/issues) for a list of proposed features (and known issues).
+
+## Project philosophy
+
+The Dinky theme is intended to make it quick and easy for GitHub Pages users to create their first (or 100th) website. The theme should meet the vast majority of users' needs out of the box, erring on the side of simplicity rather than flexibility, and provide users the opportunity to opt-in to additional complexity if they have specific needs or wish to further customize their experience (such as adding custom CSS or modifying the default layout). It should also look great, but that goes without saying.
+
+## Contributing
+
+Interested in contributing to Dinky? We'd love your help. Dinky is an open source project, built one contribution at a time by users like you. See [the CONTRIBUTING file](CONTRIBUTING.md) for instructions on how to contribute.
+
+### Previewing the theme locally
+
+If you'd like to preview the theme locally (for example, in the process of proposing a change):
+
+1. Clone down the theme's repository (`git clone https://github.com/pages-themes/dinky`)
+2. `cd` into the theme's directory
+3. Run `script/bootstrap` to install the necessary dependencies
+4. Run `bundle exec jekyll serve` to start the preview server
+5. Visit [`localhost:4000`](http://localhost:4000) in your browser to preview the theme
+
+### Running tests
+
+The theme contains a minimal test suite, to ensure a site with the theme would build successfully. To run the tests, simply run `script/cibuild`. You'll need to run `script/bootstrap` one before the test script will work.
