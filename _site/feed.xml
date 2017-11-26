@@ -5,8 +5,8 @@
     <description>I'm the King!</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 26 Nov 2017 17:01:08 -0500</pubDate>
-    <lastBuildDate>Sun, 26 Nov 2017 17:01:08 -0500</lastBuildDate>
+    <pubDate>Sun, 26 Nov 2017 17:47:30 -0500</pubDate>
+    <lastBuildDate>Sun, 26 Nov 2017 17:47:30 -0500</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
       <item>
@@ -46,7 +46,7 @@
       </item>
     
       <item>
-        <title>Simple implementation of Kmeans in C++ (Kmeans简单应用C++)</title>
+        <title>A simple implementation of Kmeans in C++ (Kmeans简单应用C++)</title>
         <description>&lt;p&gt;I finished it here to help anyone want to get familiar with it.&lt;/p&gt;
 
 &lt;p&gt;Brief description of k-means:&lt;/p&gt;
@@ -67,10 +67,14 @@
 */&lt;/span&gt;
 
 &lt;span class=&quot;cp&quot;&gt;#include &quot;kmeans.h&quot;
-#include &amp;lt;vector&amp;gt;
-#include &amp;lt;stdlib.h&amp;gt;
-#include &amp;lt;math.h&amp;gt;
-#include &amp;lt;limits.h&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;vector&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;stdlib.h&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;math.h&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;limits.h&amp;gt;
 &lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 

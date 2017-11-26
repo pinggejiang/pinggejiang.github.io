@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Simple implementation of Kmeans in C++ (Kmeans简单应用C++)"
+title:      "A simple implementation of Kmeans in C++ (Kmeans简单应用C++)"
 subtitle:   ""
 date:       2017-03-08 11:10:00
 author:     "Pingge Jiang"
@@ -30,9 +30,13 @@ Brief description of k-means:
 */
 
 #include "kmeans.h"
+
 #include <vector>
+
 #include <stdlib.h>
+
 #include <math.h>
+
 #include <limits.h>
 
 using namespace std;
