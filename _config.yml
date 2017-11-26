@@ -60,7 +60,7 @@ ga_domain: pinggejiang.com
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "<br>Pingge Jiang <br><br>☑Coding <br> ☑Medical imaging  <br> ☑Image processing <br> ☑Machine learning <br>"
+sidebar-about-description: "<br>Pingge Jiang <br>PhD in Computer Engineering<br>☑Coding <br> ☑Medical imaging  <br> ☑Image processing <br> ☑Machine learning <br>"
 sidebar-avatar: /img/avatar.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
