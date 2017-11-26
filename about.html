@@ -1,16 +1,17 @@
 ---
 layout: page
 title: "About"
-description: "Hey, this is ArtinHuang."
+description: "What's up! This is Pingge Jiang."
 header-img: "img/about-bg.jpg"
 ---
 
 <!-- Language Selector -->
+<!--
 <select class="sel-lang" onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
-    <option value="0" selected> 中文 Chinese </option>
-    <option value="1"> 英文 English </option>
+    <option value="0" selected> English </option>
+    <option value="1"> Chinese </option>
 </select>
-
+-->
 <!-- Chinese Version -->
 <div class="zh post-container">
     {% capture about_zh %}{% include about/zh.md %}{% endcapture %}
@@ -51,13 +52,13 @@ header-img: "img/about-bg.jpg"
     }
 
     // handle select change
-    function onLanChange(index){
-        if(index == 0){
-            window.location.hash = "#zh"
-        }else{
-            window.location.hash = "#en"
-        }
-    }
+//    function onLanChange(index){
+//        if(index == 0){
+//            window.location.hash = "#zh"
+//        }else{
+//            window.location.hash = "#en"
+//        }
+//    }
 
     // init
     _render();

@@ -120,7 +120,8 @@ layout: default
                                 </a>
                             </li>
                             {% endif %}
-                            <li>
+                            {% if site.douban_username %}
+			    <li>
                                 <a target="_blank" href="https://www.douban.com/people/{{ site.douban_username }}">
                                     <span class="fa-stack fa-lg">
                                         <i class="fa fa-circle fa-stack-2x"></i>
@@ -128,7 +129,7 @@ layout: default
                                     </span>
                                 </a>
                             </li>
-                            
+                            {% endif %}
                             {% if site.zhihu_username %}
                             <li>
                                 <a target="_blank" href="https://www.zhihu.com/people/{{ site.zhihu_username }}">
@@ -187,6 +188,26 @@ layout: default
                                 </a>
                             </li>
                             {% endif %}
+                            {% if site.youtube_username %}
+                            <li>
+                                <a target="_blank" href="https://www.youtube.com/{{ site.youtube_username }}">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if site.wechat_username %}
+                            <li>
+                                <a target="_blank" href="/img/icon_wechat.png">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-wechat fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            {% endif %}
                             {% if site.linkedin_username %}
                             <li>
                                 <a target="_blank" href="https://www.linkedin.com/in/{{ site.linkedin_username }}">
@@ -197,23 +218,19 @@ layout: default
                                 </a>
                             </li>
                             {% endif %}
+                            {% if site.email_username %}
+                            <li>
+                                <a target="_blank" href="mailto:{{ site.email_username }}">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            {% endif %}
                         </ul>
                     </div>
                 </section>
-
-                <!-- <section class="visible-md visible-lg">
-                    <hr><h5>高墙之外</h5>
-                       <a class="twitter-timeline" data-lang="en" data-width="300" data-height="450"  width=300 height=450 data-dnt="true" data-theme="light" href="https://twitter.com/ArtinHuang">Tweets by ArtinHuang</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-                   </section> -->
-       
-                   <!-- Music -->
-                   <section class="visible-md visible-lg">
-                   <hr>
-                   <h5>音乐</h5>
-                   <div>
-                   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=270 height=450 src="//music.163.com/outchain/player?type=0&id=932255764&auto=0&height=430"></iframe>
-                   </div>
-                   </section>
 
                 <!-- Friends Blog -->
                 {% if site.friends %}

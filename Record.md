@@ -1,3 +1,4 @@
+<!--page post template -->
 ---
 layout:     post
 title:      "Update"

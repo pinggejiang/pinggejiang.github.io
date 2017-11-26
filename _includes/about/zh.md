@@ -1,24 +1,19 @@
-<br>
+Welcome to my personal website! I’m Pingge Jiang, a current PhD candidate in Computer Engineering at Drexel University, Philadelphia, PA, United States. I have more than five years research experience in image processing and related areas. This is my personal homepage. You can find my thoughts of life and research ideas. 
+### [Email Me](mailto:pijiang1225@yahoo.com).
 
-<blockquote>
-<p style="white-space: normal; text-align:center;">世界弥漫着焦躁不安的气息，因为每一个人都急于从自己的枷锁中解放出来。
-</p>
-</blockquote>
-
-<br>
-
-#### 关于回忆
-
-20世纪的晚产儿，忝列于世的潦倒者。少时求学于祖国南陲，个性顽劣，不求甚解，以至日后岁月蹉跎，不堪回首。后逢弱冠之年，有所悔悟，学不可以已。而今躬耕于斗室，不敢妄自菲薄，只期实现年少时一二狂想，便觉余生心满意足。
+***Explanation to all categories:***
 
 
-#### 流逝风景
+##### * Lifestyle: articles originated from my  daily life and shared stories from professionals.
 
-曾有一段时间，日复一复地对抗着抑郁的心绪，甚至胆怯得不敢望人双眼。不知怎么的，竟也这样走了过来。而后接触OOP思想，却难改自己和右手小伙伴这十数年朝夕相处的恶劣禀性。在这莽莽苍苍的世间行走过几回后，更觉生存不易，物力维艰。正如村上氏所说，“心情抑郁的人只能做抑郁的梦，要是更加抑郁，连梦都不做的。” 余下这半载残生，如若这混沌世界还有什么值得坚守不变的存在，不求实现，但求能努力逼近……
+##### * Research: my research ideas, research progress and high-quality research articles in the field of image processing and machine learning.
 
-#### 理想与野望
-- 有趣的创作者
-- 合格的程序员
-- 著作等身的写作者
-- 二次元动画制作者
-- 吃烤串吃到打饱嗝的死宅
+##### * Vlog: inspired from student organization activities, YouTube pioneers and my thoughts of life.
+
+##### * Trading: useful trading strategies and technical analysis to help succeed in stock market.
+
+*Note: Cited articles are noted “shared from”, otherwise they are original and all copy rights reserved.*
+
+***About this website:***
+
+This website was launched on Oct. 29. 2016. I uploaded first posts for lifestyle, research, trading strategies and resume. Contents will be updated regularly. Any comments or questions please do not hesitate to contact me. Thanks!

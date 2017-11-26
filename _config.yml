@@ -1,27 +1,22 @@
 # Site settings
-title: 宅谈社
-SEOTitle: 宅谈社
+title: Pingge Jiang
+SEOTitle: Pingge Jiang
 header-img: img/home-bg.jpg
-email: artinhuangcn@gmail.com
-description: ""
+email: pijiang1225@yahoo.com
+description: "I'm the King!"
 keyword: ""
-url: "https://artinhuang.com"              # your host, for absolute URL
+url: "https://pinggejiang.com"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
 
 
 # SNS settings
-RSS: True
-weibo_username:     5975349353
-zhihu_username:     artinhuang
-github_username:    artinhuang
-twitter_username:   artinhuang
-douban_username:    67080615
-facebook_username:  ArtinHuang
-steam_username: 76561198268886015  
-# linkedin_username:  firstname-lastname-idxxxx
-
-
+RSS: False
+facebook_username:  pingge.jiang
+linkedin_username:  pingge-jiang-49bab2a9?trk=nav_responsive_tab_profile
+youtube_username: channel/UCnZQsOU24tHs8x8-c8NpZuA
+wechat_username: ggie11111111
+email_username: pijiang122@yahoo.com
 
 # Build settings
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
@@ -47,36 +42,32 @@ markdown: kramdown
 kramdown:
   input: GFM                            # use Github Flavored Markdown !important
 
-
-
 # Disqus settings
-disqus_username: artinhuang
+disqus_username: pingge
 
 # Netease setttings
-# netease_comment: false
-
-
+#netease_comment: true
 
 # Analytics settings
 # Baidu Analytics 
-ba_track_id: 283a9a301fa6a10cb71be600ec73eb39
+#ba_track_id: 283a9a301fa6a10cb71be600ec73eb39
 
 # Google Analytics
 ga_track_id: 'UA-108076720-1'            # Format: UA-xxxxxx-xx
-ga_domain: artinhuang.com
+ga_domain: pinggejiang.com
 
 
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "在众生面前，我不过是个归零者。<br>中文网名：路酒诗 <br><br>☑二次元废宅 <br> ☑非典型码农  <br> ☑钛金级游戏党 <br> ☑半抽风式人肉打字机 <br>"
+sidebar-about-description: "<br>Pingge Jiang <br><br>☑Coding <br> ☑Medical imaging  <br> ☑Image processing <br> ☑Machine learning <br>"
 sidebar-avatar: /img/avatar.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
 # Featured Tags
 featured-tags: true                     # whether or not using Feature-Tags
-featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
+featured-condition-size: 0             # A tag will be featured if the size of it is more than this condition value
 
 
 
@@ -87,12 +78,12 @@ service-worker: true
 
 
 # Friends
-friends: [
-    {
+#friends: [
+#    {
     #     title: "Su",
     #     href: "http://su.gallery/"
     # },{
-        title: "编程猫",
-        href: "http://www.codemao.cn/"
-    }
-]
+#        title: "编程猫",
+#        href: "http://www.codemao.cn/"
+#    }
+#]
