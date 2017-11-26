@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords"  content="">
+    <meta name="theme-color" content="#000000">
+    
+    <title>如何优雅地写作 - 宅谈社</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/2016/01/09/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%9C%B0%E5%86%99%E4%BD%9C/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">宅谈社</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/Mooc/">Mooc</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/Record/">Update</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/portfolio/">Portfolio</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    var __HuxNav__ = {
+        close: function(){
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        },
+        open: function(){
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    // Bind Event
+    $toggle.addEventListener('click', function(e){
+        if ($navbar.className.indexOf('in') > 0) {
+            __HuxNav__.close()
+        }else{
+            __HuxNav__.open()
+        }
+    })
+
+    /**
+     * Since Fastclick is used to delegate 'touchstart' globally
+     * to hack 300ms delay in iOS by performing a fake 'click',
+     * Using 'e.stopPropagation' to stop 'touchstart' event from 
+     * $toggle/$collapse will break global delegation.
+     * 
+     * Instead, we use a 'e.target' filter to prevent handler
+     * added to document close HuxNav.  
+     *
+     * Also, we use 'click' instead of 'touchstart' as compromise
+     */
+    document.addEventListener('click', function(e){
+        if(e.target == $toggle) return;
+        if(e.target.className == 'icon-bar') return;
+        __HuxNav__.close();
+    })
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/post-bg-2015-01-09.png" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/post-bg-2015-01-09.png')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#写作" title="写作">写作</a>
+                        
+                    </div>
+                    <h1>如何优雅地写作</h1>
+                    
+                    
+                    <h2 class="subheading"></h2>
+                    
+                    <span class="meta">Posted by 路酒诗 on January 9, 2016</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<p>如果你也是一名力求简洁高效的文字工作者，那么或许你也会赞同下面的观点：</p>
+
+<p><strong>「真正优雅的写作理应是一种全身心投入的心流体验，神游万仞，心骛八极。」</strong></p>
+
+<p>「心流」即英语中的 flow，最早是由美国心理学家米哈里·齐克森（ Mihaly Csikszentmihalyi）于1975年提出概念并以科学方法加以探讨，亦有人翻译为神驰状态。心流的定义是一种将个人精神力完全投注在某种活动上的感觉，心流产生的同时会伴随有高度的兴奋和内心充实感。所谓的心流实际上是一种妙不可言的精神体验，即使是在潜心写作的过程中，多半也是可遇不可求的。娜妲莉·高柏在《心灵写作》一书中也阐述过类似的看法：</p>
+
+<blockquote>
+  <p>「写作时也当如此：让写作来完成写作，让你自己消失：你只是在记录涓涓流动过你身体的思绪而已。」</p>
+</blockquote>
+
+<p>其实我们真正应该关心的是文字本身，而非诸如排版之类的繁琐细节。即使伟大的作家能够在收据、纸巾、卫生纸或者其他一切可以用来写字的地方创造出优秀的作品，但也丝毫不妨碍先进的工具或者软件帮助我们在写作过程中提高效率，激发灵感，享受如丝般顺滑的「涂写快感」，甚至还会增大自己进入心流状态的概率。</p>
+
+<p>谈及文字处理工具或者软件，从前是纸笔，而现在可能大多数人的脑海中第一时间就会联想到微软公司推出的文字处理软件—— Microsoft office Word。然而苏格兰科幻小说家 Charlie Stross曾经在其博客发表<a href="http://apple4us.com/2013/10/why-microsoft-word-must-die-charlie-stross-chinese/">《为什么Word必须死》</a>一文对Microsoft office Word进行了一番相当尖锐的批判：</p>
+
+<blockquote>
+  <p>「Word 是想像力的暴君：一个心胸狭隘、才思衰乏、反复无常的独裁者。它不适合给任何从事创造性写作的人使用。更糟的是：它是几乎垄断的，在文字处理领域有绝对优势。它无处不在的垄断地位对软件开发者构成了洗脑，只知道肤浅地模仿那只盘踞在雷德蒙德（编注：微软总部所在地）的比蒙巨兽，很少有人能自己去设想出一个文字处理工具。」</p>
+</blockquote>
+
+<blockquote>
+  <p>「我希望 Word 死掉是因为它一天不死，就一天都无法避开。我不用 Word 写小说。我用其他许多种工具，有 Scrivener（一个可以管理文档结构和编辑大群文档的软件，如果说 Word 是一个基础文本编辑器，那么 Scrivener 可以比作一个程序员的集成开发环境），也 有 Vim 这样的传统文本编辑器。但是，各大出版社都已经被吓得认定 Word 就是文档生产系统必不可少的一环。 Word的 .doc 文件对编辑或排版类工作是不适合的，但出版社还是把它当成了基底材料，导致整个生产流程都是扭曲和腐朽的。然后它们还指望我去把自己整合到一个以Word为中心的流程里，也不看看对于这份工作，它是多么不恰当的、破坏性的、费力的一个工具。它就是个避不开的东西。更糟的是，由于它的显赫地位，我们已经无力看到对文档创建工具有哪些改进的可能性。它已经阻碍我们将近25年了；希望我们能尽快找到更好的东西来取代它。」</p>
+</blockquote>
+
+<p>如果你和 Charlie Stross 一样，已经厌倦了Word及其类似产品的功能冗杂却不甚好用，那你应该接着阅读下去，或许你会发现一个关于优雅写作的全新世界。</p>
+
+<h3 id="1-从锤子便签25版本谈起">1. 从锤子便签2.5版本谈起</h3>
+
+<p><img src="http://jiage.la/up/201604123225381279219.png" alt="" /></p>
+
+<p>在2015年8月25日的锤子科技夏季新品发布会，其官网对外宣传自称是「可能是史上最漂亮的便签应用」的「锤子便签」发布了2.5的新版本。在这个迭代版本，锤子便签新增了<strong>「生成网页分享」</strong>和<strong>「Markdown 模式」</strong>两项功能。</p>
+
+<p>在锤子科技的发布会上，当解说到新版本的锤子便签时，罗永浩用<strong>「这东西是 Geek 用的」</strong>，<strong>「我们产品经理一定要我把这个放上來，我也不知道是什么破东西」</strong>等话语來描述新增加的Markdown功能。但事实上，Markdown并非什么新生事物，早在十年前它就在程序员等圈子流传开来，然后逐渐扩散成为了越来越多的文字工作者的第一选择。</p>
+
+<p>相较于纯文本编辑，Markdown 是一项相对高级的功能，它适用于文字工作者、产品经理等小众极客用户。为了避免增加普通用户的沉重感，锤子便签谨慎地将 Markdown 设置成默认关闭状态，而且没有将标记、注释、链接等更复杂的 Markdown 语法加入到产品中。（via 《不只是一款优雅的长微博工具：锤子便签发布2.5版本》，豌豆荚应用发布会第9期）</p>
+
+<h3 id="2-markdown为优雅写作而生">2. Markdown:为优雅写作而生</h3>
+
+<p><img src="http://jiage.la/up/201604123233324738757.png" alt="" /></p>
+
+<p>Markdown 最早是由 Aaron Swartz 和 John Gruber 共同设计，其目标和宗旨是实现「易读易写」，它允许人们「使用易读易写的纯文本格式编写文档，然后转换成有效的 XHTML (或者 HTML )文档」。作为一种轻量级标记语言而并非编程语言， Markdown 吸收了很多在电子邮件中已有的纯文本标记的特性。</p>
+
+<p>Markdown 语法主要分为如下几大部分：<strong>标题，段落，区块引用，代码区块，强调，列表，分割线，链接，图片，反斜杠\，符号`</strong>。受限于平台编辑器的限制，本文并不会涉及太多关于 Markdown 语法的具体用例，读者可以参考<a href="http://wowubuntu.com/markdown/basic.html">《Markdown 语法说明 (简体中文版)》</a>在15分钟内快速上手。</p>
+
+<p>或许现在你还对是否有必要花费时间和精力学习Markdown这种轻量级标记语言抱持着疑问。但是事实上，国内外已经有不少网站和软件应用或者允许了 Markdown 作为其编辑器的可选语法方案，譬如说知名的代码托管网站 GitHub 和轻量级内容发行平台 Medium 。而国内的图灵社区和为知笔记也都支持使用 Markdown 进行写作。而作为一个原生支持Markdown语法的内容写作平台——「简书」也在其网站发表了一篇博文<a href="http://www.jianshu.com/p/q81RER/">《献给写作者的 Markdown 新手指南》</a>，文中总结 Markdown 的优点如下：</p>
+
+<ul>
+  <li><strong>纯文本，所以兼容性极强，可以用所有文本编辑器打开。</strong></li>
+  <li><strong>让你专注于文字而不是排版。（一次排版，处处生成）</strong></li>
+  <li><strong>格式转换方便，Markdown 的文本你可以轻松转换为 html、电子书等。</strong></li>
+  <li><strong>Markdown 的标记语法有极好的可读性。</strong></li>
+</ul>
+
+<h3 id="3-markdown写作配置方案推荐">3. Markdown写作配置方案推荐</h3>
+
+<p>自2004年 Markdown 诞生以来，随着使用人群的不断扩大，Markdown 编辑器的数量也从过去的凤毛麟角变成了如今的俯拾皆是和琳琅满目。</p>
+
+<blockquote>
+  <p>编辑器的兴盛固然是好事，但工具的过度丰富也是一种麻烦，如何选出适合自己的 Markdown 编辑器让很多人大伤脑筋，甚至在很多时候，一个设计不佳的 Markdown 编辑器会让初次尝试 Markdown 的写作者放弃使用 Markdown 来写作。（via 少数派《码字必备:18 款优秀的 Markdown 写作工具》</p>
+</blockquote>
+
+<p>有时候选择太多并不意味着是一件好事，现在经过个人多次反复实践，以下将推荐一套跨平台的优秀的 Markdown 写作配置方案（<strong>Sublime&amp;OmniMarkupPreviewer</strong>)，以供各位读者参考。</p>
+
+<p><img src="http://jiage.la/up/201604123241273325135.png" alt="" /></p>
+
+<p><a href="http://www.sublimetext.com">Sublime Text</a>是一套跨平台的文本编辑器，其官网宣传语是「The text editor you’ll fall in love with」。作为一个闭源软件，Sublime可通过包（Package）和基于Python（一种面向对象的高级程序设计语言）的插件扩充本身的功能。大多数的包使用自由软件授权发布，并由社区建设维护。</p>
+
+<p>作为 Sublime Text 的一款插件，OmniMarkupPreviewer支持将格式化标记语言渲染输出至网页浏览器，此外还支持将渲染结果导出为HTML文件。目前，OmniMarkupPreviewer 已内置支持了以下格式化标记：</p>
+
+<ul>
+  <li>Markdown</li>
+  <li>reStructuredText</li>
+  <li>WikiCreole</li>
+  <li>Textile</li>
+  <li>Pod</li>
+  <li>RDoc</li>
+  <li>Org Mode</li>
+  <li>MediaWiki
+–AsciiDoc</li>
+  <li>Literate Haskell</li>
+</ul>
+
+<p>关于具体的配置流程，本文限于篇幅故不再赘述，读者可参考<a href="https://github.com/timonwong/OmniMarkupPreviewer">OmniMarkupPreviewer插件的GitHub项目主页</a>或者<a href="http://macplay.leanote.com/post/%E8%BF%91%E4%B9%8E%E5%AE%8C%E7%BE%8E%E7%9A%84-Markdown-%E5%86%99%E4%BD%9C%E4%BD%93%E9%AA%8C-Sublime-Text-3-OmniMarkupPreviewer">《近乎完美的 Markdown 写作体验 - Sublime Text 3 + OmniMarkupPreviewer》</a>一文进行相关配置。如果一旦配置好 Sublime Text &amp; OmniMarkupPreviewer 的 Markdown 写作方案，那么在具体的环境中，只要参照通用的 Markdown 语法在 Sublime Text 内进行写作保存，之后可以通过按下预设的快捷键（Win 环境下通常为 Ctrl + Alt + O ）在浏览器内进行实时渲染显示。</p>
+
+<p>Sublime Text 和 OmniMarkupPreviewer 的无缝配合还大多数 Markdown 编辑器所不具有的特性；如<strong>扩展语法的完备支持 (toc, tables, footnotes, attr_list …)、MathJax 公式编辑、模板高度自定义 (CSS 修改预览/导出模板)文档内标题导航、多屏幕同步刷新 (包含移动设备)、Vim 编辑模式、Snippet 扩展、无干扰写作模式等</strong>，即使是与专业的 Markdown 编辑器相比也毫不逊色。</p>
+
+<h3 id="4-关于markdown的更多延伸">4. 关于Markdown的更多延伸</h3>
+
+<ol>
+  <li><a href="https://zh.wikipedia.org/wiki/Markdown">维基百科：Markdown</a></li>
+  <li><a href="http://wowubuntu.com/markdown/index.html">Markdown 语法说明 (简体中文版)</a></li>
+  <li><a href="http://apple4us.com/2012/02/why-writers-should-use-markdown/">为什么作家应该用 Markdown 保存自己的文稿</a></li>
+  <li><a href="https://www.zhihu.com/question/20409634">知乎问答：怎样引导新手使用 Markdown？</a></li>
+  <li><a href="http://www.yangzhiping.com/tech/r-markdown-knitr.html">阳志平：《Markdown写作浅谈》</a></li>
+  <li><a href="http://www.banpie.info/how-to-write-beautifully-on-wechat-platform/">半撇：《如何在微信公众平台上优雅的写作》</a></li>
+  <li><a href="http://toutiao.com/i6234287501834453506/">少数派：《码字必备：18 款优秀的 Markdown 写作工具》</a></li>
+  <li><a href="https://help.github.com/articles/github-flavored-markdown/">GitHub Flavored Markdown - User Documentation</a></li>
+  <li><a href="http://commonmark.org/">CommonMark：对于Markdown语法标准化尝试</a></li>
+</ol>
+
+<h3 id="5-写在最后的寄语">5. 写在最后的寄语</h3>
+
+<blockquote>
+  <p>「有时候一件事情的真相，不是来自于对它的思考，而是来自于对它的感觉。」 via Stanley Kubrick</p>
+</blockquote>
+
+<p>这是 John Grumber 最喜欢的用来解释 Markdown 设计初衷的一句话，作为一门轻量级并且简单易学的标志性语言，Markdown似乎天生就是为优雅写作而生。如果你之前没有接触到Markdown但是通过阅读本文对其产生兴趣的话，那么就再犹豫了，让写作归写作，排版归排版，赶快躁起来吧！</p>
+
+<p><strong>2016-01-09 EOF.</strong></p>
+
+
+
+                <hr style="visibility: hidden;">
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2015/12/22/%E8%87%AA%E6%8B%8D/" data-toggle="tooltip" data-placement="top" title="自拍">
+                        Previous<br>
+                        <span>自拍</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2016/02/05/%E4%BA%BA%E7%94%9F%E7%9A%84%E6%84%8F%E4%B9%89%E6%98%AF%E7%88%B5%E5%A3%AB%E4%B9%90%E5%9B%A2/" data-toggle="tooltip" data-placement="top" title="人生的意义是爵士乐团">
+                        Next<br>
+                        <span>人生的意义是爵士乐团</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+                
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/tags/#随笔" title="随笔" rel="6">
+                                    随笔
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#写作" title="写作" rel="4">
+                                    写作
+                                </a>
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#A酱的人间冒险" title="A酱的人间冒险" rel="2">
+                                    A酱的人间冒险
+                                </a>
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="http://www.codemao.cn/">编程猫</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "artinhuang";
+    var disqus_identifier = "/2016/01/09/如何优雅地写作";
+    var disqus_url = "http://localhost:4000/2016/01/09/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%9C%B0%E5%86%99%E4%BD%9C/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: ''
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                        
+                        <li>
+                            <a href="/feed.xml">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a target="_blank" href="https://www.douban.com/people/67080615">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa  fa-stack-1x fa-inverse">豆</i>
+                                </span>
+                            </a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a target="_blank" href="https://www.zhihu.com/people/artinhuang">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa  fa-stack-1x fa-inverse">知</i>
+                                </span>
+                            </a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a target="_blank" href="http://weibo.com/5975349353">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="https://twitter.com/artinhuang">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a target="_blank" href="https://github.com/artinhuang">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://steamcommunity.com/profiles/76561198268886015">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-steam fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a target="_blank" href="https://www.facebook.com/ArtinHuang">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        
+                        
+                    </ul>
+                </ul>
+                <p class="copyright text-muted">
+                    如无特殊说明，本站文章基于“<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.zh" title="CC BY-NC-SA 3.0" target="_blank">CC BY-NC-SA 3.0</a>”协议发布。
+                    <br>
+                                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> <!-- | <iframe
+                            style="margin-left: 2px; margin-bottom:-5px;"
+                            frameborder="0" scrolling="0" width="91px" height="20px"
+                            src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                        </iframe> -->
+                        Copyright &copy; 宅谈社 1993-2017 
+                    </p>
+                </div>
+            </div>
+        </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+<!-- Service Worker -->
+
+<script src="/js/snackbar.js "></script>
+<script src="/js/sw-registration.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async('/js/jquery.tagcloud.js',function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-108076720-1';
+    var _gaDomain = 'artinhuang.com';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '283a9a301fa6a10cb71be600ec73eb39';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog (selector) {
+        var P = $('div.post-container'),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

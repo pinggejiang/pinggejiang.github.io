@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords"  content="">
+    <meta name="theme-color" content="#000000">
+    
+    <title>人生的意义是爵士乐团 - 宅谈社</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/2016/02/05/%E4%BA%BA%E7%94%9F%E7%9A%84%E6%84%8F%E4%B9%89%E6%98%AF%E7%88%B5%E5%A3%AB%E4%B9%90%E5%9B%A2/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">宅谈社</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/Mooc/">Mooc</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/Record/">Update</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/portfolio/">Portfolio</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    var __HuxNav__ = {
+        close: function(){
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        },
+        open: function(){
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    // Bind Event
+    $toggle.addEventListener('click', function(e){
+        if ($navbar.className.indexOf('in') > 0) {
+            __HuxNav__.close()
+        }else{
+            __HuxNav__.open()
+        }
+    })
+
+    /**
+     * Since Fastclick is used to delegate 'touchstart' globally
+     * to hack 300ms delay in iOS by performing a fake 'click',
+     * Using 'e.stopPropagation' to stop 'touchstart' event from 
+     * $toggle/$collapse will break global delegation.
+     * 
+     * Instead, we use a 'e.target' filter to prevent handler
+     * added to document close HuxNav.  
+     *
+     * Also, we use 'click' instead of 'touchstart' as compromise
+     */
+    document.addEventListener('click', function(e){
+        if(e.target == $toggle) return;
+        if(e.target.className == 'icon-bar') return;
+        __HuxNav__.close();
+    })
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/post-bg-2015-02-05.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/post-bg-2015-02-05.jpg')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#阅读" title="阅读">阅读</a>
+                        
+                    </div>
+                    <h1>人生的意义是爵士乐团</h1>
+                    
+                    
+                    <h2 class="subheading"></h2>
+                    
+                    <span class="meta">Posted by 路酒诗 on February 5, 2016</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<p>我们都曾对人生的意义感到困惑。这个问题是否有答案？答案是否取决于我们？或者它不过是一个伪问题？</p>
+
+<p><strong>《The Meaning of Life: A Very Short Introduction》</strong>（中译名为《人生的意义》)，在这部充满睿智和生气又能激发思考的作品中，特里•伊格尔顿展现了许多世纪以来的思想者，从莎士比亚、叔本华到马克思、萨特、贝克特，对人生意义问题的探索。作者知道本书的许多读者很可能会像怀疑圣诞老人的存在一样怀疑人生意义，但同时又认为，在需要寻求共同意义的当今之世，我们有必要回答这个所有问题背后的问题。</p>
+
+<p><img src="http://jiage.la/up/201604123212934039622.png" alt="" /></p>
+
+<p>《The Meaning of Life: A Very Short Introduction》
+人生的意义是什么？翻开《人生的意义》这本书的朋友，大概也都是想要知道答案罢。</p>
+
+<p>说是<strong>「死亡」、「欲望」、「沉思」</strong>，都太沉重了，似乎都太难以承受了。</p>
+
+<p>阿尔贝·加缪说过，作为一个存在的人，人类用生命的价值和意义来说服自己：人的存在本身不是荒诞的。</p>
+
+<p>确实，人生的意义，这是个荒谬的问题，但或许它的荒谬之处，正在于尽管我们已经世故到明白它不可能有答案，心中却还是天真到令人尴尬地迫切想要知道。</p>
+
+<blockquote>
+  <p>「人生的意义也许只有在时间的尽头才能得到揭示，化身为弥赛亚，款款而至。或者，全宇宙不过是某个超级巨人的拇指指甲中的一个原子。」</p>
+</blockquote>
+
+<h3 id="1-提问与回答">1. 提问与回答</h3>
+
+<p>作者在引言里说道：</p>
+
+<blockquote>
+  <p>「任何一位鲁莽决定用这个标题来写书的作者最好都准备收到一个邮包，邮包里装满笔迹潦草、附寄各种复杂的符号图表的来信。人生的意义，这样一个主题既适合疯子来写，也适合喜剧演员，我希望自己宁可是后者而非前者。我尽量用轻松明快的方式来处理这个高尚的主题，同时又不失严肃性。</p>
+</blockquote>
+
+<p>现代时期的一个典型特征是，人类生命的所谓「象征维度」被一直挤到了边缘。在这一维度之内，有三个领域在传统上至关重要：宗教、文化和性。这三个领域随着现代时期的展开而越来越远离公共生活的核心。在前现代社会，它们的绝大部分既属于私人领域，也属于公共领域。宗教不但关乎个人良心和自我救赎，它还是国家权力、公共仪式和国家意识形态的内容。作为国际政治的一个关键因素，宗教塑造了从国内战争到王朝联姻等各个国家的历史命运。各种征兆表明，我们身处的时代将在某些方面改变这一局面。</p>
+
+<p>这和人生的意义问题又有什么关系呢？</p>
+
+<blockquote>
+  <p>「答案是，这些正是人们传统上探寻自身存在之意义和价值时所指向的领域。爱、宗教信仰以及对家族血缘与文化的眷恋：很难找到比这些更为根本的生命理由。事实上，许多世纪以来，很多人愿意为了这些理由而献出生命或亮出屠刀。公共领域自身越是日益丧失意义，人们就越是急切地想寻求这些价值。事实和价值似乎分离了，前者变成了公共事务，后者则属于私人事务。」</p>
+</blockquote>
+
+<p>资本主义现代性看起来把一套几乎纯粹是工具性的经济制度强加给了我们。它是一种生活方式，追求权力、利润和物质生存条件，而不是培育人类共享和团结等各种价值。</p>
+
+<p>政治领域的内容更多的是管理和控制问题，而不是齐心协力塑造一种共同生活。理性本身被贬低为自私自利的算计。道德也越来越变成一桩私人事务，成为在卧室而不是会议室中讨论的话题。文化生活在某种意义上变得愈发重要，成长为物质生产的一个单独的行业或分支。但在另一种意义上，文化又降格为一种社会秩序的门面装饰，这种社会秩序只关心那些可以标价和测算的东西。文化现在主要变成了人们工作之余打发时间的无害手段。</p>
+
+<p>但这里有一个讽刺：</p>
+
+<blockquote>
+  <p>「文化、宗教和性越是被迫充当衰落的公共价值的替身，它们就越无力扮演这种角色。意义越是集中在象征领域，这一领域就越是被意义施加的压力所扭曲。结果，生命的这三个象征领域都开始显出病征。性演变成色欲的沉迷。性是这个枯燥的世界中仅存的少数几种快乐源泉之一。性刺激和性暴力代替了已经丧失的政治斗争热情。艺术的价值也相应地膨胀。对于唯美主义运动来说，艺术现在完全是一种生活方式。对于某些现代主义者来说，艺术代表了人文价值在人类文明中最后一片飘摇的立足之地——艺术本身对文明已经嗤之以鼻。然而，这只体现在艺术作品的形式上。由于艺术内容不可避免地反映着周遭的物化世界，它无法提供持久的救赎资源。」</p>
+</blockquote>
+
+<h3 id="2-意义的问题">2. 意义的问题</h3>
+
+<p>有些思想家认为讨论人生的意义问题本身并无意义，虽然这听起来有些拗口，但事实如此，<strong>「意义是一个语言层面的东西，无关实体。」</strong></p>
+
+<blockquote>
+  <p>法国哲学家吉尔·德勒兹等后现代主义思想家甚至认为，「意义」这个词本身就很可疑。「意义」预设了一个事物能代表或代替另一个事物——有些人觉得这种观念已是明日黄花。「阐释」这个观念本身因此饱受质疑。事物该是什么就是什么，而非代表其他东西的神秘符号。所见即所是。意义和阐释暗示了信息和机制的隐藏性，即表象与深度的叠加；但是对于后现代主义来说，「表象/深度」这整套思维带有陈旧的形而上学意味。「自我」的观念同样如此，它已经不再关乎神秘的褶层和内在的深度，而是直观可见；自我是一个去中心化的网络，而不是神秘难解的精神。</p>
+</blockquote>
+
+<p>而区分作为给定含义的「意义」，和作为意图表示某种意思的动作的「意义」，这非常重要。</p>
+
+<blockquote>
+  <p>研究语言学的学者有时把这两种不同的「意义」含义区分为作为动作的意义和作为结构的意义。就后一种而言，一个词的意义是语言结构的一种功能——「鱼」这个词通过它在语言系统中占据的位置、它在系统中与其他词的关系等等而获得意义。那么，如果说人生有意义，也许这个意义是我们自己主动赋予的，就好比我们在一页纸上画一组黑色记号，表示某种意思；或者，这个意义与我们自己的活动无关，而是类似于作为结构或功能的意义。</p>
+</blockquote>
+
+<p>让人困惑的不是「人生」这个词，而是人生本身。</p>
+
+<p>我们可以注意到，当有人哀叹<strong>「我的人生毫无意义」</strong>的时候，他们不是指人生就像一串诸如*&amp;$?%的乱码一样毫无意义。相反，它更像是<strong>「随时随地，诚意相伴，我们永远是您卑微而忠诚的仆人……」</strong>这种客套话一般地无意义。发觉人生无意义的人，并不是在抱怨他们不知道自己身体的构造，或者抱怨自己是陷入了黑洞或是坠入了海洋。怀有那种无意义感的人不只是意志消沉，而且还有精神病。他们所要表达的是，自己的生活<strong>缺乏深意（significance）</strong>。</p>
+
+<p>所谓缺乏深意，就是说缺乏核心、实质、目的、质量、价值和方向。这些人不是在说他们不能理解人生，而是他们没有什么东西值得为之生活。不是说他们的存在不可理解，而是空洞无物。但是，要意识到他们的生活空洞无物，需要大量的阐释，因而需要大量的意义活动。<strong>「我的人生毫无意义」</strong>是一句存在主义的陈述，而非逻辑陈述。一个感到人生无意义的人大概不会去找本字典来查意义，他更可能会去找自杀药丸。</p>
+
+<p>人生就像一篇华丽的演讲，看上去很有意义，实则了无趣味。人生又像一位演技拙劣的演员，看上去要表达些什么，但能力不够。能指符号的泛滥（<strong>「充满喧哗和骚动」</strong>）掩盖了所指的缺失（<strong>「却没有一点意义」</strong>）。人生就像一段低劣的修辞，华丽地用空虚来填补空虚。人生充满欺诈，又毫无内涵。所以，当冒牌国王的政治野心最终化为嘴角的一缕灰尘时，真正的问题在于苦涩的幻灭感。不过，这个比喻也具有部分欺骗性。毕竟，演员就像任何人一样是真实存在的。他们的确在真诚地创造虚构故事，他们的舞台真实存在.这个比喻也许在不由自主地暗示，这个世界（或舞台）就像演员一样不真实，而你总是可以断言人生不过是一场骗局，但布局的物质条件实实在在地存在。「销声匿迹」的演员们只是退到了屏风后面，而不是进了坟墓。</p>
+
+<p>只有傻瓜才会想象人生值得一过，在叔本华看来这是自明的真理。对他而言，人生最恰当的象征是拥有铲状爪子的鼹鼠：用它硕大的铲状爪子使劲挖洞是它一生唯一的事业；无尽的黑夜笼罩着它……它历经充满困难、毫无乐趣的一生又获得了什么呢？只是食物和繁殖，即在新的个体中继续和重新开始悲惨一生所依赖的途径？</p>
+
+<p>整个人类的进程明显是一个可怕的错误，早就应该叫停。只有那些顽固不化、自我欺骗的人面对尸横遍野的历史时才会不这么想。人类叙事就是这样一种毫无变化的不幸，只有那些被意志的狡黠俘虏的人才会觉得人类的诞生是值得的。</p>
+
+<p>在叔本华眼中，这个自我感觉良好的物种身上有种荒谬的东西，其中每个人都相信自己具有至高价值，追逐一些会在瞬间化为乌有的启迪性目标。这无意义的喧哗与骚动并没有伟大的目标，只有「暂时的志得意满、由渴望限定的瞬间快感、大量而长期的痛苦、持续不断的挣扎、一切人对一切人的战争、互相逃避和追捕、压力、欲望、需求、焦虑、尖叫和怒号；这是永恒的景象，或者等到地球土崩瓦解再重新展开」。</p>
+
+<p>叔本华所能指出的是：</p>
+
+<blockquote>
+  <p>「没有人对这整场悲喜剧存在的原因有丝毫的了解，因为它没有观众，演员也经历着无尽的烦忧，极少有享受，并且只有消极的享受」。这个世界不过是一次徒劳的欲求、一场荒诞的烂戏、一个巨大的交易市场或生命互相厮杀的达尔文主义斗兽场。」</p>
+</blockquote>
+
+<h3 id="3-意义的没落">3. 意义的没落</h3>
+
+<p>我们面对那些宣称人生无意义的人，总是可以反驳：「你说的无意义是指什么？」他接下来的回答必定是从意义方面来表达。那些追问人生的意义的人常常问，人生中的各种境况总括起来意味着什么；但既然分析人生中的每一个具体处境都要涉及意义，那么，就不能悲叹人生没有任何意义。怀疑一切乃是空洞的姿态，同样，我们也难看出人生从头至尾就是荒诞。也许就缺乏给定的目的或目标来说，人生从头至尾是无意义的；但除非我们能依据某一逻辑来评价这一事实，我们就不能说人生完全荒诞。</p>
+
+<p>然而，情况或许是，我们的人生相比它曾经含有的意义显得荒诞，或者相比你所认为的它曾含有的意义显得荒诞。契诃夫之类的现代主义者为什么会如此关注无意义之可能性，其中一个原因是，现代主义本身离过去那个充满意义，或至少据说充满意义的时代不远。</p>
+
+<p>相形之下，后现代主义已经远离了那个存有真理、意义和现实的时代，像一个毛头小伙那样粗鲁地对待那些痴想的错觉。没必要为从未存在过的深度而神伤。深度看似消失并不表明人生肤浅，因为你必须先有深度才能衬托出肤浅。诸种意义之意义不是一个可靠的根基，而是具有压抑性的幻觉。不依靠那些意义的保证而生活，这才是自由的生活。你可以说，过去确曾有过一些宏大叙事（例如马克思主义），它们回应了某些真实的东西，但现在我们已经完全摆脱了；或者你可以坚持认为，这些叙事话语从一开始便是妄想，也就无所谓失不失去。要么这个世界不再由故事来塑造，要么这个世界从未被故事塑造过。</p>
+
+<p>的确，如果意义只是某种我们钻研出来的东西，它就不能充当现实的牢固基础。事物必须内在地有意义，而不是靠我们钻研出意义。所有这些意义必须能够整合成一个总的意义。除非有一个诸种意义背后的总意义，否则就完全没有意义。</p>
+
+<h3 id="4-人生是你创造的吗">4. 人生是你创造的吗？</h3>
+
+<p>人生的意义不是自己能够随心所欲创造的。它并不能免除你的一项责任，即在常识之下证明任何使你的人生有意义的东西的合理性。你不能只是说：<strong>「我个人认为我的人生意义在于让睡鼠窒息而死」</strong>，然后就这样敷衍过去。</p>
+
+<p>这也不是无中生有式的创造过程。人类可以自我决断——但只能建立在更深刻的对自然、现实世界的依赖以及人类相互依赖的基础之上。我为自己的人生所创造的任何意义，都在内部受制于这一依赖关系。我们无法从零开始。这不像尼采所想象的那样，是一个清除上帝赋予的意义，然后铸造我们自己的意义的问题。因为，无论身处何方，我们都已经深陷于意义之中。我们被编织进他人的意义网络——我们不曾选择过那些意义，但它们却提供了一个母体，我们可以在其中理解自我与世界。在这个意义上，即使不是在所有意义上，<strong>「我能决定自己的人生意义」</strong>这种观念乃是一种错觉。</p>
+
+<p>在最后，作者举了自己所推崇的理想的人生意象——爵士乐:</p>
+
+<blockquote>
+  <p>爵士乐队的即兴演奏明显与交响乐队不同，因为很大程度上每位演奏者都可以按自己的喜好来自由表现。但是，她在这么做的时候，对其他乐手自我表达式的演奏，怀有一种接纳性的敏感。他们所形成的复合的和谐状态，并非源于演奏一段共同的乐谱，而是源于在他人自由表达的基础上，每位乐手都用音乐自由地表达。每位乐手的演奏越有表现力，其他乐手就会从中得到灵感，被激励而达到更精彩的效果。</p>
+</blockquote>
+
+<p>在这里，自由与<strong>「整体的善」</strong>之间没有冲突，但这个意象与极权主义截然相反。虽然每位乐手都为<strong>「整体的更大的善」</strong>作出了贡献，但她不是通过苦涩的自我牺牲，而只是通过表达自我。这当中有自我实现，但实现的方式是自我在作为整体的音乐中消失。其中有成就，但不是自吹自擂的成功。相反，成就——音乐本身——充当着乐手之间发生关联的媒介。演奏的高超技巧带来快乐，并且——因为人的力量得到了自由满足或实现——存在着自我发展意义上的幸福。由于这种自我发展是互惠互利的，我们甚至可以宽泛地、比拟地说，这是一种爱。当然，把这一场景比做人生的意义大概是最妥当的——一方面，它使得人生富有意义；另一方面（更有争议一些），我们如此这般行事，便可实现最佳的本性。</p>
+
+<p>由此看来，所谓的<strong>「人生的意义是爵士乐团」</strong>，即是指实现个人价值与集体价值的统一，在实现<strong>「整体的善」</strong>却不失自由。</p>
+
+<h3 id="5-小结">5. 小结</h3>
+
+<p>作者特里•伊格尔顿从分析<strong>「生命的意义是什么」</strong>这个问题本身的意义开始，经过前现代、现代主义、后现代主义和叔本华的意志、尼采的权力意志、获得人生本质的弗洛伊德体系或马克思主义体系，实践哲学和死亡哲学，一直到当今时代的极端主义和虚无主义，期间还穿插了以莎士比亚和贝克特的戏剧为代表的众多文学经典，这些作品描述了人类生存背景，或是创造了意义，或是对现有意义重新洗牌。</p>
+
+<p>最后作者不惜厚颜提出了自己的答案：<strong>人生的意义是爵士乐团。</strong></p>
+
+<p>想必有些读者读到最后，譬如我，未免会有些失望。</p>
+
+<p>无论如何，自己一开始就动机不纯，多少是想要藉由阅读来获取关于人生意义的答案，但结果却有点不尽人意。</p>
+
+<p>也许正如自由作家Ernest Dempsey所说：</p>
+
+<blockquote>
+  <p>「伊格尔顿处理哲学和文学宝库的方式暗示了为人生意义问题提供单一答案或者现实立场的企图是注定要失败的。意义的模糊性本身就是对这个问题的最好回答。」</p>
+</blockquote>
+
+<p>但我们同时也不应忘记：</p>
+
+<blockquote>
+  <p>A life which contains nothing for which one is not prepared to die is unlikely to be very fruitful.</p>
+</blockquote>
+
+<h3 id="附录名词解释">附录：名词解释</h3>
+
+<p><strong>现代主义</strong>:</p>
+
+<p>以科学为基础，讲求理性与逻辑，实验探证。其中牛顿的力学理论、达尔文的进化论及弗洛伊德对自我的研究为现代主义奠定了重要的理论基础。现代主义从文化的历史角度来说，是1914年前的几十年中兴起的新艺术与文学风格，艺术家为了反抗19世纪末期的陈规旧矩，转而用一种他们认为感情上更真实的方式，来表现出大家真正的感受与想法。</p>
+
+<p><strong>后现代主义（Postmodernism）:</strong></p>
+
+<p>一个从理论上难以精准下定论的一种概念，因为后现代主要理论家，均反对以各种约定俗成的形式，来界定或者规范其主义。对于此学说的持续时间有不同说法，其中有一说是指从1970年代到1990年代。目前，在建筑学、文学批评、心理分析学、法律学、教育学、社会学、人类学、政治学等诸多领域，均就当下的后现代境况，提出了自成体系的论述。他们各自都反对以特定方式来继承固有或者既定的理念。</p>
+
+<p>由于它是由多重艺术主义融合而成的派别，因此要为后现代主义进行精辟且公式化的解说是无法完成的。若以单纯的历史发展角度来说，最早出现后现代主义的是哲学和建筑学。当中领先其他范畴的，尤其是六十年以来的建筑师，由于反对国际风格（International Style）缺乏人文关注，引起不同建筑师的大胆创作，发展出既独特又多元化的后现代式建筑方案。而哲学界则先后出现不同学者就相类似的人文境况进行解说，其中能够为后现代主义大略性表述的哲学文本，可算是法国的解构主义了。排斥「整体」的观念，强调异质性、特殊性和唯一性。不同于文学批评家，一个严肃的哲学家可能不喜欢使用后现代主义这个术语，因为这个术语过于模糊，后现代主义可能指女性主义、解构主义、后殖民主义中的一个或几种。</p>
+
+<h3 id="参考资料">参考资料</h3>
+
+<ol>
+  <li>《人生的意义》，[英]特里·伊格尔顿 / 朱新伟 / 译林出版社 / 2012</li>
+  <li>特里·伊格尔顿著《人生的意义》简评 / Ernest Dempsey</li>
+</ol>
+
+
+
+                <hr style="visibility: hidden;">
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2016/01/09/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%9C%B0%E5%86%99%E4%BD%9C/" data-toggle="tooltip" data-placement="top" title="如何优雅地写作">
+                        Previous<br>
+                        <span>如何优雅地写作</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2016/10/04/A%E9%85%B1%E7%9A%84%E4%BA%BA%E9%97%B4%E5%86%92%E9%99%A9-%E7%AC%AC1%E8%AF%9D/" data-toggle="tooltip" data-placement="top" title="《A酱的人间冒险》第1话">
+                        Next<br>
+                        <span>《A酱的人间冒险》第1话</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+                
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/tags/#随笔" title="随笔" rel="6">
+                                    随笔
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#写作" title="写作" rel="4">
+                                    写作
+                                </a>
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#A酱的人间冒险" title="A酱的人间冒险" rel="2">
+                                    A酱的人间冒险
+                                </a>
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="http://www.codemao.cn/">编程猫</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "artinhuang";
+    var disqus_identifier = "/2016/02/05/人生的意义是爵士乐团";
+    var disqus_url = "http://localhost:4000/2016/02/05/%E4%BA%BA%E7%94%9F%E7%9A%84%E6%84%8F%E4%B9%89%E6%98%AF%E7%88%B5%E5%A3%AB%E4%B9%90%E5%9B%A2/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: ''
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                        
+                        <li>
+                            <a href="/feed.xml">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a target="_blank" href="https://www.douban.com/people/67080615">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa  fa-stack-1x fa-inverse">豆</i>
+                                </span>
+                            </a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a target="_blank" href="https://www.zhihu.com/people/artinhuang">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa  fa-stack-1x fa-inverse">知</i>
+                                </span>
+                            </a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a target="_blank" href="http://weibo.com/5975349353">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="https://twitter.com/artinhuang">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a target="_blank" href="https://github.com/artinhuang">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://steamcommunity.com/profiles/76561198268886015">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-steam fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a target="_blank" href="https://www.facebook.com/ArtinHuang">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        
+                        
+                    </ul>
+                </ul>
+                <p class="copyright text-muted">
+                    如无特殊说明，本站文章基于“<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.zh" title="CC BY-NC-SA 3.0" target="_blank">CC BY-NC-SA 3.0</a>”协议发布。
+                    <br>
+                                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> <!-- | <iframe
+                            style="margin-left: 2px; margin-bottom:-5px;"
+                            frameborder="0" scrolling="0" width="91px" height="20px"
+                            src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                        </iframe> -->
+                        Copyright &copy; 宅谈社 1993-2017 
+                    </p>
+                </div>
+            </div>
+        </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+<!-- Service Worker -->
+
+<script src="/js/snackbar.js "></script>
+<script src="/js/sw-registration.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async('/js/jquery.tagcloud.js',function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-108076720-1';
+    var _gaDomain = 'artinhuang.com';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '283a9a301fa6a10cb71be600ec73eb39';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog (selector) {
+        var P = $('div.post-container'),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

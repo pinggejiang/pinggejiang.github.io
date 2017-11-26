@@ -1,0 +1,13 @@
+---
+layout:     post
+title:      "诗其一"
+subtitle:   ""
+date:       2014-01-22 12:00:00
+author:     "路酒诗"
+header-img: "img/home-bg.jpg"
+tags:
+    - 写作
+---
+
+不做事的都在装大爷，
+孤独的人却总想要吃饱。
