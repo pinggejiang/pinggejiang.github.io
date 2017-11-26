@@ -43,7 +43,7 @@ kramdown:
   input: GFM                            # use Github Flavored Markdown !important
 
 # Disqus settings
-disqus_username: pingge
+disqus_username: pinggejiang-github-io
 
 # Netease setttings
 #netease_comment: true
