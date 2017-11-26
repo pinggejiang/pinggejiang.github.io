@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="I'm the King!">
+    <meta name="keywords"  content="">
+    <meta name="theme-color" content="#000000">
+    
+    <title>Quick start of Python for beginners (with programming background) - Pingge Jiang</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/research/2016/11/05/python_notes/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Pingge Jiang</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/">Categories</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/resume/">Resume</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    var __HuxNav__ = {
+        close: function(){
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        },
+        open: function(){
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    // Bind Event
+    $toggle.addEventListener('click', function(e){
+        if ($navbar.className.indexOf('in') > 0) {
+            __HuxNav__.close()
+        }else{
+            __HuxNav__.open()
+        }
+    })
+
+    /**
+     * Since Fastclick is used to delegate 'touchstart' globally
+     * to hack 300ms delay in iOS by performing a fake 'click',
+     * Using 'e.stopPropagation' to stop 'touchstart' event from 
+     * $toggle/$collapse will break global delegation.
+     * 
+     * Instead, we use a 'e.target' filter to prevent handler
+     * added to document close HuxNav.  
+     *
+     * Also, we use 'click' instead of 'touchstart' as compromise
+     */
+    document.addEventListener('click', function(e){
+        if(e.target == $toggle) return;
+        if(e.target.className == 'icon-bar') return;
+        __HuxNav__.close();
+    })
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/home-bg.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/home-bg.jpg')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    
+                    
+                    <ul class="tag_box list-unstyled list-inline">
+                        <li><i class="fa fa-folder-open"></i></li>
+                        
+                        
+                        
+                        <li><a href="/categories#research-ref">
+                            research <span>(8)</span>
+                            
+                        </a></li>
+                        
+                        
+                    </ul>
+                    
+                    
+                    
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#coding" title="coding">coding</a>
+                        
+                        <a class="tag" href="/tags/#python" title="python">python</a>
+                        
+                        <a class="tag" href="/tags/#tutorial" title="tutorial">tutorial</a>
+                        
+                    </div>
+                    <h1>Quick start of Python for beginners (with programming background)</h1>
+                    
+                    
+                    <h2 class="subheading"></h2>
+                    
+                    <span class="meta">Posted by Pingge Jiang on November 5, 2016</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<p>Python is one of the most powerful but also easy to learn programming languages. After this tutorial, you will be able to write python projects by yourself! Good luck!</p>
+
+<h2 id="lets-begin-with-a-simple-python-code">Let’s begin with a simple Python code:</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">value</span> <span class="o">=</span> <span class="mi">23</span>
+<span class="n">speed</span> <span class="o">=</span> <span class="n">value</span>
+<span class="n">my_string</span> <span class="o">=</span> <span class="s">"test"</span>
+
+<span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">20</span> <span class="ow">and</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="mi">100</span>
+    <span class="n">value</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">my_string</span> <span class="o">=</span> <span class="n">my_string</span> <span class="o">+</span> <span class="s">"the program"</span>
+
+<span class="k">print</span> <span class="n">value</span>
+<span class="k">print</span> <span class="n">my_string</span>
+</code></pre></div></div>
+
+<p>In Python, everything is an object. So line 2 is not a copy process, Python just tag the address of 23 with speed along with value.</p>
+
+<p>Line 5 to Line 7 is a “block”, defining the if  statement.</p>
+
+<h2 id="now-lets-start-with-details-of-python">Now let’s start with details of Python:</h2>
+
+<p><strong>There are two fundamental Datatypes in Python:</strong></p>
+
+<ol>
+  <li><strong>Mutable</strong>: State can be changed after creation
+    <ul>
+      <li>ex. <em>list</em>: A = [3.24, 1000, ‘foo’]    <br />
+———defined by bracket</li>
+      <li>ex. <em>dictionary</em>: A = {‘age’: 34, ‘gender’: ‘female’}    <br />
+———defined by curly braces</li>
+    </ul>
+  </li>
+  <li><strong>Immutable</strong>: State cannot be changed after creation
+    <ul>
+      <li>ex. <em>tuple</em>: A = (32, ‘bar’, 32.2) <br />
+———defined by parenthesis</li>
+      <li>ex. <em>str</em>: A = “hello world!”
+———defined by ‘ ‘ or “ “ or “” “”
+(If mutable, then you would be able to change the value stored in memory)</li>
+    </ul>
+  </li>
+</ol>
+
+<p>(Strings, tuples and lists are three sequence types in python, which can be indexed and iterable)</p>
+
+<h3 id="strings">strings:</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;</span><span class="n">my_string</span> <span class="o">=</span> <span class="s">"hello world"</span>
+<span class="o">&gt;&gt;</span> <span class="s">'wor'</span> <span class="ow">in</span> <span class="n">my_string</span>
+<span class="bp">True</span>
+
+<span class="o">&gt;&gt;</span> <span class="n">my_string</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+<span class="s">'ell'</span>
+
+<span class="o">&gt;&gt;</span> <span class="n">var</span> <span class="o">=</span> <span class="s">"hello"</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="s">"world"</span>
+<span class="o">&gt;&gt;</span><span class="k">print</span> <span class="n">var</span>
+<span class="n">hello</span> <span class="n">world</span>
+
+<span class="o">&gt;&gt;</span> <span class="n">var</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="s">'HELLO WORLD'</span>
+
+<span class="o">&gt;&gt;</span> <span class="s">"data1, label1, data2, label2"</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">"."</span><span class="p">)</span>
+<span class="p">[</span><span class="s">'data1'</span><span class="p">,</span> <span class="s">'label1'</span><span class="p">,</span> <span class="s">'data2'</span><span class="p">,</span> <span class="s">'label2'</span><span class="p">]</span>
+
+<span class="o">&gt;&gt;</span> <span class="n">speed</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="o">&gt;&gt;</span><span class="n">fuel</span> <span class="o">=</span> <span class="mf">5.23</span>
+<span class="o">&gt;&gt;</span> <span class="n">bar</span> <span class="o">=</span> <span class="s">"speed = </span><span class="si">%</span><span class="s">i, fuel = </span><span class="si">%</span><span class="s">f"</span> <span class="o">%</span><span class="p">(</span><span class="n">speed</span><span class="p">,</span> <span class="n">fuel</span><span class="p">)</span>
+<span class="s">'speed = 10, fuel = 5.230000'</span>
+</code></pre></div></div>
+<p>Notes of strings from above code:
+<br /> * the ‘in’ keyword is Python style logical comparison
+<br /> * sequence types in python (strings, tuples and lists) can be indexed
+<br /> * strings has built-in functions: upper, split. etc.
+<br /> * print out a string by using ‘%’ sign to specify argument values</p>
+
+<h3 id="lists">lists:</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;</span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">43</span><span class="p">,</span> <span class="s">"some words"</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">1.23</span><span class="p">]</span>
+<span class="o">&gt;&gt;</span><span class="k">print</span> <span class="n">my_list</span>
+<span class="p">[</span><span class="mi">43</span><span class="p">,</span> <span class="s">'some words'</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">1.23</span><span class="p">]</span>
+
+<span class="o">&gt;&gt;</span><span class="k">print</span> <span class="n">my_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="mi">43</span>
+
+<span class="o">&gt;&gt;</span><span class="k">print</span> <span class="n">my_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="mf">1.23</span>
+
+<span class="o">&gt;&gt;</span><span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span><span class="k">print</span> <span class="n">my_list</span>
+<span class="p">[</span><span class="mi">43</span><span class="p">,</span> <span class="s">'some words'</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">1.23</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+
+<span class="o">&gt;&gt;</span><span class="n">my_list</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span><span class="k">print</span> <span class="n">my_list</span>
+<span class="p">[</span><span class="mi">43</span><span class="p">,</span> <span class="s">'some words'</span><span class="p">,</span> <span class="mf">1.23</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+
+<span class="o">&gt;&gt;</span><span class="n">my_list2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">59</span><span class="p">]</span>
+<span class="o">&gt;&gt;</span><span class="n">my_list2</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="o">&gt;&gt;</span><span class="k">print</span> <span class="n">my_list2</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+
+<span class="o">&gt;&gt;</span><span class="n">my_list2</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+<span class="o">&gt;&gt;</span><span class="k">print</span> <span class="n">my_list2</span>
+<span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</code></pre></div></div>
+<p>Notes of lists from above code:
+<br /> * lists in Python can store any type of values, e.g. int, float, string, char. etc.
+<br /> * there are some built-in functions in Python for lists: append, remove, sort, reverse. etc.</p>
+
+<p>lists has a built-in function called iterators:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;</span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">98</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="s">'time'</span><span class="p">,</span> <span class="mf">32.99</span><span class="p">]</span>
+<span class="o">&gt;&gt;</span><span class="n">my_list_iter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span><span class="n">my_list_iter</span><span class="o">.</span><span class="nb">next</span><span class="p">()</span>
+<span class="mi">98</span>
+
+<span class="o">&gt;&gt;</span><span class="n">my_list_iter</span><span class="o">.</span><span class="nb">next</span><span class="p">()</span>
+<span class="mi">23</span>
+
+<span class="o">&gt;&gt;</span><span class="n">my_list_iter</span><span class="o">.</span><span class="nb">next</span><span class="p">()</span>
+<span class="s">'time'</span>
+<span class="o">...</span>
+
+<span class="o">&gt;&gt;</span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">:</span>               
+	<span class="o">------------</span><span class="k">for</span><span class="o">-</span><span class="n">loop</span> <span class="n">secretly</span> <span class="n">calls</span> <span class="nb">iter</span> <span class="ow">and</span> <span class="n">iterator</span><span class="o">.</span><span class="nb">next</span><span class="p">()</span>
+       <span class="k">print</span> <span class="n">item</span>
+<span class="mi">98</span>
+<span class="mi">23</span>
+<span class="s">'time'</span>
+<span class="mf">32.99</span>
+</code></pre></div></div>
+
+<p>Notes of lists from above code:
+<br /> * ‘iter’ is a built-in function in python for lists, every single call of ‘next’ will return next element in the list
+<br /> * ‘for … in …’ is Python style of for-loop,  but traditional for-loop is also acceptable in Python</p>
+
+<h3 id="tuples">tuples:</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;</span><span class="n">test</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">61</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span><span class="n">test</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">37</span>
+<span class="n">some</span> <span class="n">error</span>                
+       <span class="o">--------------</span><span class="n">tuples</span> <span class="n">are</span> <span class="n">immutable</span>
+<span class="o">&gt;&gt;</span><span class="n">test</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">690</span><span class="p">)</span>
+<span class="n">some</span> <span class="n">error</span>
+
+<span class="n">unpacking</span> <span class="n">tuples</span><span class="p">:</span>
+<span class="o">&gt;&gt;</span><span class="n">employee</span> <span class="o">=</span> <span class="p">(</span><span class="s">'bob'</span><span class="p">,</span> <span class="s">'male'</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s">'engineer'</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span><span class="n">name</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">job</span> <span class="o">=</span> <span class="n">employee</span>
+<span class="o">&gt;&gt;</span><span class="k">print</span> <span class="n">name</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">job</span>
+<span class="n">bob</span> <span class="n">male</span> <span class="mi">42</span> <span class="n">engineer</span>
+</code></pre></div></div>
+<p>Notes of tuple from above code:
+<br /> * tuples can be regarded as ‘immutable lists’, some built-in function of lists can be used by tuples
+<br /> * element values of tuples cannot be changed. But they can be unpacked, then change the value, then pack back</p>
+
+<p>we can also create a list of tuples:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;</span><span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">55</span><span class="p">]</span>
+<span class="o">&gt;&gt;</span><span class="n">B</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+<span class="o">&gt;&gt;</span><span class="n">C</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span><span class="k">print</span> <span class="n">C</span>
+<span class="p">[(</span><span class="mi">22</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">33</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="p">(</span><span class="mi">44</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="p">(</span><span class="mi">55</span><span class="p">,</span> <span class="mi">40</span><span class="p">)]</span>
+
+<span class="o">&gt;&gt;</span><span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+      <span class="k">print</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+<span class="mi">22</span> <span class="mi">10</span> <span class="mi">32</span>
+<span class="mi">33</span> <span class="mi">20</span> <span class="mi">53</span>
+<span class="mi">44</span> <span class="mi">30</span> <span class="mi">74</span>
+<span class="mi">55</span> <span class="mi">40</span> <span class="mi">95</span>
+
+<span class="o">&gt;&gt;</span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)):</span>
+      <span class="k">print</span> <span class="n">index</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+<span class="mi">0</span> <span class="mi">22</span> <span class="mi">10</span> <span class="mi">32</span>
+<span class="mi">1</span> <span class="mi">33</span> <span class="mi">20</span> <span class="mi">53</span>
+<span class="mi">2</span> <span class="mi">44</span> <span class="mi">30</span> <span class="mi">74</span>
+<span class="mi">3</span> <span class="mi">55</span> <span class="mi">40</span> <span class="mi">95</span>
+</code></pre></div></div>
+
+<h3 id="dictionaries">dictionaries:</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;</span><span class="n">employee</span> <span class="o">=</span> <span class="p">{</span><span class="s">'jobs'</span><span class="p">:</span> <span class="s">'boss'</span><span class="p">,</span> <span class="s">'age'</span><span class="p">:</span> <span class="mi">38</span><span class="p">,</span> <span class="s">'pay'</span><span class="p">:</span><span class="mi">7200</span><span class="p">}</span>
+<span class="o">&gt;&gt;</span><span class="k">print</span> <span class="n">employee</span><span class="p">[</span><span class="s">'job'</span><span class="p">]</span>
+<span class="n">boss</span>
+
+<span class="o">&gt;&gt;</span><span class="k">print</span> <span class="n">employee</span><span class="p">[</span><span class="s">'age'</span><span class="p">]</span>
+<span class="mi">38</span>
+
+<span class="o">&gt;&gt;</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">employee</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">'</span><span class="si">%</span><span class="s">s: </span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">employee</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+<span class="n">pay</span><span class="p">:</span> <span class="mi">72000</span>
+<span class="n">job</span><span class="p">:</span> <span class="n">boss</span>
+<span class="n">age</span><span class="p">:</span> <span class="mi">38</span>
+
+<span class="o">&gt;&gt;</span><span class="n">employee</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+<span class="p">[(</span><span class="s">'pay'</span><span class="p">,</span> <span class="mi">72000</span><span class="p">),</span> <span class="p">(</span><span class="s">'job'</span><span class="p">,</span> <span class="s">'boss'</span><span class="p">),</span> <span class="p">(</span><span class="s">'age'</span><span class="p">,</span> <span class="mi">38</span><span class="p">)]</span>
+</code></pre></div></div>
+<p>Notes of dictionaries from above code:
+<br /> * dictionaries are kind of ‘struct’ in C
+<br /> * use ‘:’ to specify class name and class value
+<br /> * ‘str’ is a keyword in Python to convert other data types to string
+<br /> * ‘items’ secretly calls ‘for … in …’ and return (class name, class value) pairs</p>
+
+<h2 id="after-introducing-the-datatypes-of-python-lets-see-some-basic-file-io-methods">After introducing the datatypes of python, let’s see some basic file I/O methods:</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">read</span> <span class="n">example</span><span class="p">:</span>
+
+<span class="o">&gt;&gt;</span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'test.txt'</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span><span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+<span class="o">&gt;&gt;</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>                              <span class="o">--------------</span><span class="n">read</span> <span class="mi">5</span> <span class="nb">bytes</span>
+<span class="o">&gt;&gt;</span><span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                              <span class="o">--------------</span><span class="n">move</span> <span class="n">curser</span> <span class="n">to</span> <span class="n">byte</span> <span class="n">zero</span><span class="p">(</span><span class="n">the</span> <span class="n">beginning</span> <span class="n">of</span> <span class="n">the</span> <span class="nb">file</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span><span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">SEEK_SET</span><span class="p">)</span>                 <span class="o">--------------</span><span class="n">move</span> <span class="n">to</span> <span class="n">byte</span> <span class="mi">0</span><span class="p">,</span> <span class="n">starting</span> <span class="k">from</span> <span class="n">the</span> <span class="n">beginning</span> <span class="n">of</span> <span class="n">the</span> <span class="nb">file</span>
+<span class="o">&gt;&gt;</span><span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">SEEK_END</span><span class="p">)</span>               <span class="o">--------------</span><span class="n">move</span> <span class="n">backward</span> <span class="mi">10</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">starting</span> <span class="k">from</span> <span class="n">the</span> <span class="n">end</span> <span class="n">of</span> <span class="n">the</span> <span class="nb">file</span>
+<span class="o">&gt;&gt;</span><span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">SEEK_CUR</span><span class="p">)</span>                 <span class="o">--------------</span><span class="n">move</span> <span class="n">forward</span> <span class="mi">5</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">starting</span> <span class="k">from</span> <span class="n">the</span> <span class="n">current</span> <span class="n">position</span>
+
+<span class="n">write</span> <span class="n">example</span><span class="p">:</span>
+
+<span class="o">&gt;&gt;</span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'test.txt'</span><span class="p">,</span> <span class="s">'w+'</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span><span class="n">f</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span><span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+     <span class="k">print</span> <span class="n">line</span>
+<span class="o">&gt;&gt;</span><span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h2 id="python-style-of-loops">Python style of loops:</h2>
+
+<h3 id="range">range:</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;</span><span class="n">my_list</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span><span class="k">print</span> <span class="n">my_list</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="o">&gt;&gt;</span><span class="n">my_list</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span><span class="k">print</span> <span class="n">my_list</span>
+<span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">19</span><span class="p">]</span>
+
+<span class="o">&gt;&gt;</span><span class="n">my_list</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span><span class="k">print</span> <span class="n">my_list</span>
+<span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">27</span><span class="p">]</span>
+</code></pre></div></div>
+<p>Notes of range() from above code:
+<br /> * standard format: range(start, end, interval)
+<br /> * if start value is not provided, default start is 0
+<br /> * return arrays are [start, end), which means  start &lt;= values &lt; end</p>
+
+<h3 id="for-loop">for-loop:</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">61</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">my_list</span><span class="p">)):</span>
+    <span class="n">item</span> <span class="o">=</span> <span class="n">my_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">foo</span> <span class="o">=</span> <span class="n">item</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="mi">4</span>
+    <span class="k">print</span> <span class="n">foo</span>
+</code></pre></div></div>
+<p>Notes of for-loop from above code:
+<br /> * ‘len’ is a keyword to get the length of lists
+<br /> * Any scope in Python (for loops, if statements, class definitions, etc.) are defined in ‘blocks’, defined by spaces  and comma instead of ‘end’ keyword</p>
+
+<h3 id="enumerate">enumerate:</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;</span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">61</span><span class="p">]</span>
+<span class="o">&gt;&gt;</span><span class="n">foo</span> <span class="o">=</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span><span class="n">foo</span><span class="o">.</span><span class="nb">next</span><span class="p">()</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>                <span class="o">-----------</span><span class="nb">tuple</span>
+<span class="o">&gt;&gt;</span><span class="n">foo</span><span class="o">.</span><span class="nb">next</span><span class="p">()</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">23</span><span class="p">)</span>               <span class="o">-----------</span><span class="nb">tuple</span>
+
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">my_list</span><span class="p">):</span>
+      <span class="n">my_list</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">*=</span> <span class="mi">10</span>
+      <span class="k">print</span> <span class="n">my_list</span>
+<span class="o">...</span>
+</code></pre></div></div>
+<p>Notes of enumerate from above code:
+<br /> * ‘enumerate’ function produces (index, value) pairs
+<br /> * for-loop in Python can extract multiple items from input arguments</p>
+
+<h3 id="list-comprehension">list comprehension:</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="n">expression</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">]</span>
+<span class="n">ex</span><span class="p">:</span>
+<span class="o">&gt;&gt;</span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="o">&gt;&gt;</span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">]</span>
+<span class="o">&gt;&gt;</span><span class="k">print</span> <span class="n">new_list</span>
+<span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="mi">1600</span><span class="p">,</span> <span class="mi">2500</span><span class="p">]</span>
+</code></pre></div></div>
+
+<h2 id="with-all-the-backgrounds-let-see-some-more-complicated-python-codes">With all the backgrounds, let see some more complicated Python codes:</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.24</span>                                     <span class="o">-----------</span><span class="k">global</span> <span class="n">variable</span>
+
+<span class="k">def</span> <span class="nf">my_function</span><span class="p">(</span><span class="n">parameter</span><span class="p">):</span>                      <span class="o">-----------</span><span class="n">definition</span> <span class="n">name</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="mi">34</span>
+    <span class="n">radius</span> <span class="o">=</span> <span class="mi">100</span>                                 <span class="o">-----------</span><span class="n">definition</span> <span class="n">body</span>
+    <span class="n">delta</span> <span class="o">=</span> <span class="n">parameter</span> <span class="o">*</span> <span class="n">alpha</span>      
+    <span class="k">return</span> <span class="n">age</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">delta</span>                  <span class="o">-----------</span><span class="k">return</span> <span class="n">value</span>
+
+<span class="k">def</span> <span class="nf">my_range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>                <span class="o">-----------</span><span class="nb">input</span> <span class="n">parameter</span> <span class="n">can</span> <span class="n">also</span> <span class="n">has</span> <span class="n">default</span> <span class="n">value</span>
+    <span class="n">numbers</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">my_function</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">result</span>
+</code></pre></div></div>
+<p>Notes from above code:
+<br /> * variables defined outside of definitions are global variables
+<br /> * variables defined inside of definitions are local variables and cannot be used outside of definition
+<br /> * ‘def’ is the keyword if define a definition</p>
+
+<h2 id="import-libraries-or-other-functions">import libraries or other functions:</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">example</span>                              <span class="o">-------------</span><span class="kn">import</span> <span class="nn">whole</span> <span class="nb">file</span>
+
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">example</span><span class="o">.</span><span class="n">my_range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>     <span class="o">--------------</span><span class="n">my_range</span> <span class="ow">is</span> <span class="ow">in</span> <span class="n">example</span><span class="o">.</span><span class="n">py</span>
+     <span class="n">total</span> <span class="o">+=</span> <span class="n">item</span>
+<span class="k">print</span> <span class="n">total</span>
+
+<span class="ow">or</span><span class="p">:</span>
+
+<span class="kn">from</span> <span class="nn">example</span> <span class="kn">import</span> <span class="n">my_range</span>                <span class="o">--------------</span><span class="kn">import</span> <span class="nn">single</span> <span class="n">definition</span> <span class="k">from</span> <span class="n">a</span> <span class="nb">file</span>
+
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">my_range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">+=</span> <span class="n">item</span>
+
+<span class="ow">or</span><span class="p">:</span>
+
+<span class="kn">from</span> <span class="nn">example</span> <span class="kn">import</span> <span class="n">my_range</span> <span class="k">as</span> <span class="n">flower</span>      <span class="o">---------------</span><span class="kn">import</span> <span class="nn">single</span> <span class="n">definition</span> <span class="k">from</span> <span class="n">a</span> <span class="nb">file</span> <span class="k">with</span> <span class="n">alias</span>
+
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">flower</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">+=</span> <span class="n">item</span>
+</code></pre></div></div>
+
+<h2 id="import-matlab-plot-library-to-plot-images">import matlab plot library to plot images:</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">pi</span>
+
+<span class="n">sine_wave</span> <span class="o">=</span> <span class="p">[</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="mf">0.001</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">)]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sine_wave</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<h2 id="finally-classes-in-python-leave-details-for-you-to-google-">finally, classes in Python: leave details for you to google :)</h2>
+<p><img src="/img/post/python_notes.png" alt="python" /></p>
+
+
+                <hr style="visibility: hidden;">
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/research/2016/11/03/volume_java/" data-toggle="tooltip" data-placement="top" title="3D Volume object in Java">
+                        Previous<br>
+                        <span>3D Volume object in Java</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/research/2016/11/08/mha_matlab/" data-toggle="tooltip" data-placement="top" title="Read and write .mha file in Matlab(medical imaging)">
+                        Next<br>
+                        <span>Read and write .mha file in Matlab(medical imaging)</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+                
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/tags/#coding" title="coding" rel="6">
+                                    coding
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#java" title="java" rel="1">
+                                    java
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#volume" title="volume" rel="1">
+                                    volume
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#python" title="python" rel="1">
+                                    python
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#tutorial" title="tutorial" rel="1">
+                                    tutorial
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#matlab" title="matlab" rel="2">
+                                    matlab
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#mha" title="mha" rel="2">
+                                    mha
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#trading" title="trading" rel="1">
+                                    trading
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#tracking" title="tracking" rel="2">
+                                    tracking
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#image processing" title="image processing" rel="2">
+                                    image processing
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#c++" title="c++" rel="3">
+                                    c++
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#optical flow" title="optical flow" rel="1">
+                                    optical flow
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#presentation" title="presentation" rel="1">
+                                    presentation
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#thesis" title="thesis" rel="1">
+                                    thesis
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#B-spline" title="B-spline" rel="1">
+                                    B-spline
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#registration" title="registration" rel="1">
+                                    registration
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#SPIE" title="SPIE" rel="1">
+                                    SPIE
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#kmeans" title="kmeans" rel="1">
+                                    kmeans
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#machine learning" title="machine learning" rel="1">
+                                    machine learning
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#alibaba" title="alibaba" rel="1">
+                                    alibaba
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#interview" title="interview" rel="1">
+                                    interview
+                                </a>
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "pingge";
+    var disqus_identifier = "/research/2016/11/05/python_notes";
+    var disqus_url = "http://localhost:4000/research/2016/11/05/python_notes/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: ''
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li>
+                                <a target="_blank" href="https://www.facebook.com/pingge.jiang">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            <li>
+                                <a target="_blank" href="https://www.youtube.com/channel/UCnZQsOU24tHs8x8-c8NpZuA">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            <li>
+                                <a target="_blank" href="/img/icon_wechat.png">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-wechat fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            <li>
+                                <a target="_blank" href="https://www.linkedin.com/in/pingge-jiang-49bab2a9?trk=nav_responsive_tab_profile">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            <li>
+                                <a target="_blank" href="mailto:pijiang122@yahoo.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+		
+			</ul>
+                </ul>
+                <p class="copyright text-muted">
+                · 这一生很短， 终将失去， 不妨大胆一些。爱一个人，追一次梦，不妨大胆一些 ·                    
+		<br>
+                        Pingge Jiang Copyright &copy; Pingge Jiang 2017 
+                    </p>
+                </div>
+            </div>
+        </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+<!-- Service Worker -->
+
+<script src="/js/snackbar.js "></script>
+<script src="/js/sw-registration.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async('/js/jquery.tagcloud.js',function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-108076720-1';
+    var _gaDomain = 'pinggejiang.com';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog (selector) {
+        var P = $('div.post-container'),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

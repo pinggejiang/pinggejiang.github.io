@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="I'm the King!">
+    <meta name="keywords"  content="">
+    <meta name="theme-color" content="#000000">
+    
+    <title>美股投资第一弹:入门篇 - Pingge Jiang</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/trading/2016/11/12/trading_no1/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Pingge Jiang</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/">Categories</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/resume/">Resume</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    var __HuxNav__ = {
+        close: function(){
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        },
+        open: function(){
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    // Bind Event
+    $toggle.addEventListener('click', function(e){
+        if ($navbar.className.indexOf('in') > 0) {
+            __HuxNav__.close()
+        }else{
+            __HuxNav__.open()
+        }
+    })
+
+    /**
+     * Since Fastclick is used to delegate 'touchstart' globally
+     * to hack 300ms delay in iOS by performing a fake 'click',
+     * Using 'e.stopPropagation' to stop 'touchstart' event from 
+     * $toggle/$collapse will break global delegation.
+     * 
+     * Instead, we use a 'e.target' filter to prevent handler
+     * added to document close HuxNav.  
+     *
+     * Also, we use 'click' instead of 'touchstart' as compromise
+     */
+    document.addEventListener('click', function(e){
+        if(e.target == $toggle) return;
+        if(e.target.className == 'icon-bar') return;
+        __HuxNav__.close();
+    })
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/home-bg.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/home-bg.jpg')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    
+                    
+                    <ul class="tag_box list-unstyled list-inline">
+                        <li><i class="fa fa-folder-open"></i></li>
+                        
+                        
+                        
+                        <li><a href="/categories#trading-ref">
+                            trading <span>(1)</span>
+                            
+                        </a></li>
+                        
+                        
+                    </ul>
+                    
+                    
+                    
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#trading" title="trading">trading</a>
+                        
+                    </div>
+                    <h1>美股投资第一弹:入门篇</h1>
+                    
+                    
+                    <h2 class="subheading"></h2>
+                    
+                    <span class="meta">Posted by Pingge Jiang on November 12, 2016</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<p>经历了8年牛市， 美股绝对是最具投资吸引力的市场之一。那这里凭我这两年来摸爬滚打的个人经验来给新人或者国内有兴趣投资的人一点入门启发。</p>
+
+<h3 id="-开户和券商选择">* 开户和券商选择</h3>
+<p>美股开户和券商选择对很多人来说肯定是最头疼的问题。特别是国际学生或是国际买家来说。那我把大家常用的券商大致分为两类：国内券商和美国券商。</p>
+
+<p>国内券商比较有名的有老虎、富图、雪球等。这些券商有对于国内买家来说它们提供简单易用又不失专业的分析软件，数据实时可靠，而且提供了bbs的功能来和同行进行交流的机会，有一些大牛在穿梭于这些平台中可以帮助大家获取一些投资建议。而且相对于美国券商，国内券商的方便开户和全中文界面对于国内买家来说简单的多。</p>
+
+<p>美国券商总类繁多，大致分为传统券商和互联网券商。传统券商比较大的有scottrade，tdameritrade和firstrade等。这些券商提供全方位的证券服务，很多美国城市都有local branch, 交易品种全以及客户服务优良。主要区别在于佣金计算方式，最低资金的要求以及交易软件的专业性。具体细节可以到各个券商网站进行对比。相比较来说scottrade的佣金比较便宜，提供买卖7刀的固定佣金，如果是大资金投资可以省下很多钱。td的TWS是现在美股交易用的最多的最专业的交易软件。区别于传统券商，现在有很多新兴的互联网券商，比如tradestation， ib盈透等。这些券商的一大特点是佣金便宜，买卖更加real-time，比较适合大资金。缺点是客服一般，没有local branch以及资金起步要求比较高。对于国内券商来说，美国券商开户比较麻烦，需要网上申请，然后到local branch提交申请材料等待审核等。</p>
+
+<p>对于新人来说我要推荐下robinhood。作为新兴互联网券商，提供0佣金服务，开户简单，还有5天3次的daytrade机会以及robinhood gold的免费投资基金。缺点是不专业，没有提供专业实时的chart或是交易软件，而且经常服务器卡死、下单比较慢等。</p>
+
+<h3 id="--基本下单类型">*  基本下单类型</h3>
+<p>开好户那下一步就是交易了，对于大部分券商来说，基本交易类型大致可以分为4类：市场价买卖，限价买卖，止损买卖以及止损限价买卖。市场价买卖以下单时的市场价为准，速度快但是很考验券商的系统交易实时性。限价单是只有在限定价格以上才卖出或限定价格以下才买入。止损价是当价格达到激活点，交易被执行。止损限价单是在股票价格达到止损价时授权交易，但因在止损价之上或之下设置了价格限定，此订单还会保证不会以高于限定的价格买入或以低于限定的价格卖出。</p>
+
+<p>美股是t+3交易，就是说25000刀以下的账户资金需要3天时间settle，否则会被视为daytrade。如果被视为daytrader则会被限制大概3个月（视券商而定）的自由交易。25000以上的账户没有daytrade限制。具体来说比如scottrade，如果一只股票当天刚刚卖出，如果margin balance不够买新的股票却被下单了，则被视为一次daytrade，如果margin balance够cover新买的股票则不被视为daytrade。又比如robinhood instant， 交易当天无论margin balance是多少只要当天重复买卖就是daytrade，但是第二天资金就settle可以进行买卖。</p>
+
+<h3 id="-市场分析渠道">* 市场分析渠道</h3>
+<p>获取市场新闻、投资人观点以及数据分析有很多渠道。新闻类用的最多的一些网站门户比如yahoo finance, google finance, marketwatch以及cnbc等。这些网站提供全方位的股票新闻，市场动态以及全球股市分析服务，从这些网站还可以download一些往年数据和公司基本面信息。数据分析和投资人观点服务的门户网站有比如zacks， seeking alpha和earning whispers等，这些网站提供很多专业的投资人建议，很多是收费的，但是一个原则是仅一家之言不可构成投资建议。 数据分析和选股的有很多网站和app可供选择，网站门户类有stockcharts.com，finviz.com和tradingview.com等，这些网站有比较专业的charts以及很多indicators可以选择，可以帮组选股。app类比较好的有stockstation， moneyflow和stocktracker等。这些app可以提供实时的数据分析，公司基本面以及有些集成了stocktwits的同行交流功能。软件类比较好的是td的tws，图形分析比较专业而且全面，如果没有td账户可以注册临时账号来用tws，但是数据有15min延时。</p>
+
+<p>有很多网站提供美股基础教程，比如ib的交易者大学，老虎证券的公开课，investing.com，investopedia.com等。这些渠道可以帮助获取很多股票分析、交易基础等知识。</p>
+
+<p>To Be Continue…</p>
+
+
+
+                <hr style="visibility: hidden;">
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/research/2016/11/08/mha_matlab/" data-toggle="tooltip" data-placement="top" title="Read and write .mha file in Matlab(medical imaging)">
+                        Previous<br>
+                        <span>Read and write .mha file in Matlab(medical imaging)</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/research/2016/11/16/mouse_tracking/" data-toggle="tooltip" data-placement="top" title="Mouse tracking sample project">
+                        Next<br>
+                        <span>Mouse tracking sample project</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+                
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/tags/#coding" title="coding" rel="6">
+                                    coding
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#java" title="java" rel="1">
+                                    java
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#volume" title="volume" rel="1">
+                                    volume
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#python" title="python" rel="1">
+                                    python
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#tutorial" title="tutorial" rel="1">
+                                    tutorial
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#matlab" title="matlab" rel="2">
+                                    matlab
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#mha" title="mha" rel="2">
+                                    mha
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#trading" title="trading" rel="1">
+                                    trading
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#tracking" title="tracking" rel="2">
+                                    tracking
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#image processing" title="image processing" rel="2">
+                                    image processing
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#c++" title="c++" rel="3">
+                                    c++
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#optical flow" title="optical flow" rel="1">
+                                    optical flow
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#presentation" title="presentation" rel="1">
+                                    presentation
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#thesis" title="thesis" rel="1">
+                                    thesis
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#B-spline" title="B-spline" rel="1">
+                                    B-spline
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#registration" title="registration" rel="1">
+                                    registration
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#SPIE" title="SPIE" rel="1">
+                                    SPIE
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#kmeans" title="kmeans" rel="1">
+                                    kmeans
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#machine learning" title="machine learning" rel="1">
+                                    machine learning
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#alibaba" title="alibaba" rel="1">
+                                    alibaba
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#interview" title="interview" rel="1">
+                                    interview
+                                </a>
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "pingge";
+    var disqus_identifier = "/trading/2016/11/12/trading_no1";
+    var disqus_url = "http://localhost:4000/trading/2016/11/12/trading_no1/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: ''
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li>
+                                <a target="_blank" href="https://www.facebook.com/pingge.jiang">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            <li>
+                                <a target="_blank" href="https://www.youtube.com/channel/UCnZQsOU24tHs8x8-c8NpZuA">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            <li>
+                                <a target="_blank" href="/img/icon_wechat.png">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-wechat fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            <li>
+                                <a target="_blank" href="https://www.linkedin.com/in/pingge-jiang-49bab2a9?trk=nav_responsive_tab_profile">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            <li>
+                                <a target="_blank" href="mailto:pijiang122@yahoo.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+		
+			</ul>
+                </ul>
+                <p class="copyright text-muted">
+                · 这一生很短， 终将失去， 不妨大胆一些。爱一个人，追一次梦，不妨大胆一些 ·                    
+		<br>
+                        Pingge Jiang Copyright &copy; Pingge Jiang 2017 
+                    </p>
+                </div>
+            </div>
+        </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+<!-- Service Worker -->
+
+<script src="/js/snackbar.js "></script>
+<script src="/js/sw-registration.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async('/js/jquery.tagcloud.js',function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-108076720-1';
+    var _gaDomain = 'pinggejiang.com';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog (selector) {
+        var P = $('div.post-container'),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

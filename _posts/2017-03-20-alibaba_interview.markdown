@@ -5,10 +5,11 @@ subtitle:   ""
 comment: true
 date:       2017-03-20 11:20:00
 author:     "Pingge Jiang"
-header-img: "img/home-bg.jpg"
+header-img: "img/post-bg-alibaba.jpg"
 catalog:    true
+categories: lifestyle
 tags:
-    - alibaba, interview
+    - [alibaba, interview]
 
 ---
 总结一下我的阿里算法工程师-机器学习 面试经历吧。网上别的童鞋给的面经帮助很大，我也算来回馈社会了. 我同学刚和我说阿里在招人然后马上就要准备面试，然后我做图像的给推了机器学习，所以中间就两天时间吧，几乎没有好好睡过覺。把机器学习，算法和以前做过的东西好好补习了一遍。Anyway，进入正题。有很多问题已经想不起来了，想到什么写什么， 大家将就看吧。

@@ -6,8 +6,9 @@ date:       2016-11-12 05:29:00
 author:     "Pingge Jiang"
 header-img: "img/home-bg.jpg"
 catalog:    true
+categories: trading
 tags:
-    - Trading
+    - trading
 
 ---
 经历了8年牛市， 美股绝对是最具投资吸引力的市场之一。那这里凭我这两年来摸爬滚打的个人经验来给新人或者国内有兴趣投资的人一点入门启发。

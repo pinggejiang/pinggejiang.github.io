@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="I'm the King!">
+    <meta name="keywords"  content="">
+    <meta name="theme-color" content="#000000">
+    
+    <title>总结一下我的阿里巴巴算法工程师-机器学习 面试经历 (My interview for Alibaba Software Engineer-Machine Learning) - Pingge Jiang</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/lifestyle/2017/03/20/alibaba_interview/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Pingge Jiang</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/">Categories</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/resume/">Resume</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    var __HuxNav__ = {
+        close: function(){
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        },
+        open: function(){
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    // Bind Event
+    $toggle.addEventListener('click', function(e){
+        if ($navbar.className.indexOf('in') > 0) {
+            __HuxNav__.close()
+        }else{
+            __HuxNav__.open()
+        }
+    })
+
+    /**
+     * Since Fastclick is used to delegate 'touchstart' globally
+     * to hack 300ms delay in iOS by performing a fake 'click',
+     * Using 'e.stopPropagation' to stop 'touchstart' event from 
+     * $toggle/$collapse will break global delegation.
+     * 
+     * Instead, we use a 'e.target' filter to prevent handler
+     * added to document close HuxNav.  
+     *
+     * Also, we use 'click' instead of 'touchstart' as compromise
+     */
+    document.addEventListener('click', function(e){
+        if(e.target == $toggle) return;
+        if(e.target.className == 'icon-bar') return;
+        __HuxNav__.close();
+    })
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/post-bg-alibaba.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/post-bg-alibaba.jpg')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    
+                    
+                    <ul class="tag_box list-unstyled list-inline">
+                        <li><i class="fa fa-folder-open"></i></li>
+                        
+                        
+                        
+                        <li><a href="/categories#lifestyle-ref">
+                            lifestyle <span>(1)</span>
+                            
+                        </a></li>
+                        
+                        
+                    </ul>
+                    
+                    
+                    
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#alibaba" title="alibaba">alibaba</a>
+                        
+                        <a class="tag" href="/tags/#interview" title="interview">interview</a>
+                        
+                    </div>
+                    <h1>总结一下我的阿里巴巴算法工程师-机器学习 面试经历 (My interview for Alibaba Software Engineer-Machine Learning)</h1>
+                    
+                    
+                    <h2 class="subheading"></h2>
+                    
+                    <span class="meta">Posted by Pingge Jiang on March 20, 2017</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<p>总结一下我的阿里算法工程师-机器学习 面试经历吧。网上别的童鞋给的面经帮助很大，我也算来回馈社会了. 我同学刚和我说阿里在招人然后马上就要准备面试，然后我做图像的给推了机器学习，所以中间就两天时间吧，几乎没有好好睡过覺。把机器学习，算法和以前做过的东西好好补习了一遍。Anyway，进入正题。有很多问题已经想不起来了，想到什么写什么， 大家将就看吧。</p>
+
+<h3 id="一面">一面</h3>
+
+<p>3月5号简历送出去7号就来电话了，一大早9点的电话（国内应该是晚上10点）。面试官应该是团队主管，一开始让我做个自我介绍，然后详细解释了一下master和phd期间做的东西。中间打断好多次问了一些细节。然后就是挑paper问，问了算法实现、我的contribution以及我的创新点在哪里，这个因人而异就不累赘了。 然后就是机器学习的一些问题， 问我哪些熟悉，哪些用过，然后具体问了一些比如SVM的核函数，原理，推导以及优劣，还有libsvm的可改参数。然后就是classification methods啊应用啊什么的。还有一些问题想不起来了，具体可以把网上机器学习面试常考问题都过一遍基本够用， 我有网上看过攻略基本都有准备到。 然后就是问deep learning的问题。最后一个问题是要我几分钟内写kmeans的code，然后就是我大概讲了一通原理然后开始写（最后反正没写完。。）后来面试官给我的总结就是理论基础很好，上手能力要加强。。总结一面，面试官就说phd对写代码要求不高（可能体力活都给本科研究生干？），然后phd的话科研项目一定要很了解，里面用到的知识点要很熟，然后就是网上面经太有用！大概50分钟。</p>
+
+<h3 id="二面">二面</h3>
+
+<p>12号晚上10点多来了第二面（国内9点多）。是部门老大，问我有没有时间和我聊聊。。然后就聊吧。一开始又是自我介绍，科研项目什么的，虽然也是技术面但是感觉都问得不深。问我为什么phd放弃名校去个一般的学校。然后因为我做的医学图像算法，感觉还给他上了个有关CT啊激光手术啊的课。然后就是开放问题：淘宝的bug有什么，把我放到他们部门我能做什么来改进淘宝。。。呃一下子不知道怎么答了，作为在美国待了6年的人真的已经快不知道淘宝长什么样子了。然后就随便解释了通。他叫回去好好研究下淘宝下次还会问相似的问题。感觉二面也会问些技术的问题吧但是问得不深。。可能部门老大都已经不做技术很多年。但是自己讲到的项目的东西一定要很了解，随便怎么问都能答的上来。大概40分钟不到。</p>
+
+<h3 id="三面">三面</h3>
+
+<p>三面BU技术交叉面，20号一早打来的，这次有邮件预约不像前两次这么突然。对于为什么会有交叉面我也不懂，网上据说前两次面的好才有，我同学和我说因为今年优质海归好几个，有uiuc,cmu和stanford的（心想真stanford的用屁股想想也知道只是来练练手的。。）然后这次是阿里妈妈P9级的高级算法专家。一上来就是问技术，虽然不是一个部门的尼玛比前两面都专业太多。 上来就问Newton, quasi-Newton算法的原理和区别，gradient steepest, bfgs和bfgsb什么的具体细节问题，cost function在不同场景的用法，然后L0,L1,L2。然后还是SVM的原理和推导，什么情况下用什么kernel，以及逻辑回归的最大似然值什么的。还有一些专业的问题想不起来了，应该也是因人而异的吧。有几个专有名词我都没听说过。我听不懂的时候就会让他说下英文是什么或者中文是什么。。 回答的都还行，然后最后一个概率题没答出来：一个桶里面红求一个桶里面蓝球，数量相同，第一次从红桶放一个球到蓝桶，第二次从蓝桶拿一个球放红桶，问我最后红球多还是蓝球多（应该不是这么问的，但是实在想不起来了，你们大概理解下意思吧就。。）最后他问我有什么想问的，我就很直接的问表现怎么样，然后他就说要最后综合考虑的，hr过两天会联系我。我就说那就今天的表现怎么样，他说都已经暗示你了啊。还有hr面呐。。大概50分钟。</p>
+
+<h3 id="四面">四面</h3>
+
+<p>最后一面HR，我以为起码会等两三天才会打电话来吧。我内部的同学半夜给我发了一个帖子好像是阿里彭蕾的一次演讲内容，叫我好好看看阿里想要什么樣的人。。结果第二天起来9点的样子刚打开帖子HR就来电话了。。上来又是要自我介绍和为什么回国（所以准备一段精彩的自我介绍很重要，海外的同学还要好好想怎么让他们觉得你就是想回国）。然后就是要我用通俗的语言解释做过的项目。为什么做这些和应用在哪些方面。就这样聊了半个小时左右吧。准备好一大堆淘宝的bug以及修复问题都没问。。</p>
+
+<p>能想起来的就这些，四次面试比我想的要顺。面试官层级明显一次比一次高， 然后层级高的专家专业知识真的不是盖的。感觉阿里内推效率还是蛮高的，两个星期4轮面试。问得问题很细节，要准备的很多，然后网上面经确实帮助非常大，所以大家好好准备吧！Good Luck!</p>
+
+
+
+                <hr style="visibility: hidden;">
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/research/2017/03/08/kmeans_cpp/" data-toggle="tooltip" data-placement="top" title="Simple implementation of Kmeans in C++ (Kmeans简单应用C++)">
+                        Previous<br>
+                        <span>Simple implementation of Kmeans in C++ (Kmeans简单应用C++)</span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+                
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/tags/#coding" title="coding" rel="6">
+                                    coding
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#java" title="java" rel="1">
+                                    java
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#volume" title="volume" rel="1">
+                                    volume
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#python" title="python" rel="1">
+                                    python
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#tutorial" title="tutorial" rel="1">
+                                    tutorial
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#matlab" title="matlab" rel="2">
+                                    matlab
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#mha" title="mha" rel="2">
+                                    mha
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#trading" title="trading" rel="1">
+                                    trading
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#tracking" title="tracking" rel="2">
+                                    tracking
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#image processing" title="image processing" rel="2">
+                                    image processing
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#c++" title="c++" rel="3">
+                                    c++
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#optical flow" title="optical flow" rel="1">
+                                    optical flow
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#presentation" title="presentation" rel="1">
+                                    presentation
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#thesis" title="thesis" rel="1">
+                                    thesis
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#B-spline" title="B-spline" rel="1">
+                                    B-spline
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#registration" title="registration" rel="1">
+                                    registration
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#SPIE" title="SPIE" rel="1">
+                                    SPIE
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#kmeans" title="kmeans" rel="1">
+                                    kmeans
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#machine learning" title="machine learning" rel="1">
+                                    machine learning
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#alibaba" title="alibaba" rel="1">
+                                    alibaba
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#interview" title="interview" rel="1">
+                                    interview
+                                </a>
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "pingge";
+    var disqus_identifier = "/lifestyle/2017/03/20/alibaba_interview";
+    var disqus_url = "http://localhost:4000/lifestyle/2017/03/20/alibaba_interview/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: ''
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li>
+                                <a target="_blank" href="https://www.facebook.com/pingge.jiang">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            <li>
+                                <a target="_blank" href="https://www.youtube.com/channel/UCnZQsOU24tHs8x8-c8NpZuA">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            <li>
+                                <a target="_blank" href="/img/icon_wechat.png">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-wechat fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            <li>
+                                <a target="_blank" href="https://www.linkedin.com/in/pingge-jiang-49bab2a9?trk=nav_responsive_tab_profile">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            <li>
+                                <a target="_blank" href="mailto:pijiang122@yahoo.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+		
+			</ul>
+                </ul>
+                <p class="copyright text-muted">
+                · 这一生很短， 终将失去， 不妨大胆一些。爱一个人，追一次梦，不妨大胆一些 ·                    
+		<br>
+                        Pingge Jiang Copyright &copy; Pingge Jiang 2017 
+                    </p>
+                </div>
+            </div>
+        </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+<!-- Service Worker -->
+
+<script src="/js/snackbar.js "></script>
+<script src="/js/sw-registration.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async('/js/jquery.tagcloud.js',function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-108076720-1';
+    var _gaDomain = 'pinggejiang.com';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog (selector) {
+        var P = $('div.post-container'),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

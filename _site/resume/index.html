@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="I'm the King!">
+    <meta name="keywords"  content="">
+    <meta name="theme-color" content="#000000">
+    
+    <title>Resume - Pingge Jiang</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/resume/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Pingge Jiang</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/">Categories</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/resume/">Resume</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    var __HuxNav__ = {
+        close: function(){
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        },
+        open: function(){
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    // Bind Event
+    $toggle.addEventListener('click', function(e){
+        if ($navbar.className.indexOf('in') > 0) {
+            __HuxNav__.close()
+        }else{
+            __HuxNav__.open()
+        }
+    })
+
+    /**
+     * Since Fastclick is used to delegate 'touchstart' globally
+     * to hack 300ms delay in iOS by performing a fake 'click',
+     * Using 'e.stopPropagation' to stop 'touchstart' event from 
+     * $toggle/$collapse will break global delegation.
+     * 
+     * Instead, we use a 'e.target' filter to prevent handler
+     * added to document close HuxNav.  
+     *
+     * Also, we use 'click' instead of 'touchstart' as compromise
+     */
+    document.addEventListener('click', function(e){
+        if(e.target == $toggle) return;
+        if(e.target.className == 'icon-bar') return;
+        __HuxNav__.close();
+    })
+</script>
+
+
+    <!-- Page Header -->
+<header class="intro-header" style="background-image: url('/img/about-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <!-- <h1>Resume</h1> -->
+                    <!--<hr class="small">-->
+                    <h3><span class="subheading">What's up! This is Pingge Jiang.</span></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+	<div class="row">
+        
+
+<!-- USE SIDEBAR -->
+    <!-- PostList Container -->
+    		<div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                postlist-container
+            ">
+    			<!-- English Version -->
+<div class="en post-container">
+    
+    
+<h1 id="pingge-jiang">Pingge Jiang</h1>
+
+<h2 id="research-and-work-experience">Research and Work Experience</h2>
+
+<h3 id="drexel-university-data-fusion-lab-ece-department">Drexel University, Data Fusion Lab, ECE Department</h3>
+
+<p><em>Research Assistant, PhD</em></p>
+
+<ul>
+  <li>Worked as a researcher for Center for Sleep and Circadian Neurobiology, University of Pennsylvania. The research topic was mice sleeping signal analysis. I served for designing the mice tracking algorithm based on overnight monitoring videos to get perfect mice location and generate the sleeping signal. The data was used for M.D.s for further analysis.</li>
+  <li>Passed Ph.D. candidacy exam of ECE Department of Drexel University. I was focusing on radiological image registration and segmentation algorithms. My research topic was state-of-art CT and MRI registration.</li>
+  <li>Worked on developing high-performance image registration algorithm. A map-reduce framework (Hadoop) was innovatively introduced to radiological image registration for large CT and MRI images. B-spline surface refinement was used as the deformable registration method.</li>
+  <li>Worked on 3D patient tumor tracking based on multiple 2d x-ray scans. A multi-atlas segmentation is used for tumor locating, then we do image registration and gantry projection to get motion vectors. The tracking results are used for automatic real-time gantry refinement.</li>
+  <li>Worked on sparse B-spline image registration for radiological images. An Octree-based multi-grid B-spline algorithm is introduced by focusing on detecting high-variation areas of images to decouple discontinuous motions. This algorithm is performing an accurate, efficient and low-cost registration process.</li>
+  <li>Worked on sparse multi-grid B-spline registration with fully convolutional neural network</li>
+</ul>
+
+<h3 id="alibaba-group-lbs-team-business-platform">Alibaba Group, LBS team, Business Platform</h3>
+
+<p><em>Intern - Senior Software Engineer in Machine Learning</em></p>
+
+<ul>
+  <li>Worked on customer analysis and sales prediction based on Alibaba big data. Participated project: A systematic model for Hema Supermarket candidate location scoring.</li>
+</ul>
+
+<h3 id="purdue-university-tasi-lab-ece-department">Purdue University, TASI Lab, ECE Department</h3>
+
+<p><em>Research Assistant, MS</em></p>
+
+<ul>
+  <li>Severed as the key researcher for the naturalistic driving data analysis project sponsored by Toyota, Inc. Being the researcher in task 3, our goal was using large-scale naturalistic diving data to realize pedestrian detection, pedestrian tracking and pedestrian behavior analysis.</li>
+  <li>We hired 110 drivers collecting daily driving data for us. I developed most of the software and GUIs used for data collection and processing. More than 10 undergraduates were working on the data by using them.</li>
+  <li>Developed the pedestrian detection algorithm for large-scale naturalistic driving data. The first stage was driving environmental categorization. Then we used feature based or constraints based algorithms for pedestrian appearance probability estimation for different categories.</li>
+  <li>The second algorithm we developed for better pedestrian detection performance was using HOG as pedestrian descriptor. We created a huge database as training data and then used machine learning method (ELM &amp; SVM) to fuse multiple scores to determine pedestrian locations.</li>
+  <li>A robust pedestrian tracking algorithm was developed, which involved with pedestrian detection, pedestrian segmentation, feature matching, feature fusion and motion learning. The algorithm was approved to be robust that the performance for complex real-life scenarios is better than other existing algorithms</li>
+  <li>Master’s thesis: A new comprehensive approach for pedestrian tracking and status analysis. Pedestrian walking speed, pedestrian-vehicle relationship, collision probability are analyzed based on developed pedestrian detection and tracking algorithms.</li>
+</ul>
+
+<h2 id="patents">Patents</h2>
+
+<ul>
+  <li>Du, E.Y., Yang, K., Jiang, P., Sherony, R. and Takahashi, H., Toyota Motor Engineering &amp; Manufacturing North America, Inc., Toyota Jidosha Kabushiki Kaisha, Indiana University Research and Technology Corporation, 2015. System and method of alerting a driver that visual perception of pedestrian may be difficult. U.S. Patent 9,070,023.</li>
+</ul>
+
+<h2 id="qualification">Qualification</h2>
+
+<ul>
+  <li>Experienced programmer in C/C++, Matlab, Java, Python, Linux, software implementation and Human-Computer GUI design.</li>
+  <li>Extensive knowledge in math background, digital image/video processing, computer vision, 2D/3D medical image segmentation/registration, pattern recognition, biometrics, object detection and tracking, classifier, neural networks, algorithm design and machine learning.</li>
+</ul>
+
+</div>
+
+<!-- Handle Language Change -->
+<script type="text/javascript">
+    // get nodes
+    var $en = document.querySelector(".en");
+
+    // bind hashchange event
+    window.addEventListener('hashchange', _render);
+
+    // handle render
+    function _render(){
+            $en.style.display = "block";
+    }
+
+    // handle select change
+//    function onLanChange(index){
+//        if(index == 0){
+//            window.location.hash = "#zh"
+//        }else{
+//            window.location.hash = "#en"
+//        }
+//    }
+
+    // init
+    _render();
+</script>
+
+
+
+<!-- disqus 评论框 start -->
+<div class="comment">
+    <div id="disqus_thread" class="disqus-thread">
+
+    </div>
+</div>
+<!-- disqus 评论框 end -->
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "pingge";
+    var disqus_identifier = "pingge//resume/";
+    var disqus_url = "http://localhost:4000/resume/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+    		</div>
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                            
+                                <a href="/tags/#coding" title="coding" rel="6">
+                                    coding
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#java" title="java" rel="1">
+                                    java
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#volume" title="volume" rel="1">
+                                    volume
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#python" title="python" rel="1">
+                                    python
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#tutorial" title="tutorial" rel="1">
+                                    tutorial
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#matlab" title="matlab" rel="2">
+                                    matlab
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#mha" title="mha" rel="2">
+                                    mha
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#trading" title="trading" rel="1">
+                                    trading
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#tracking" title="tracking" rel="2">
+                                    tracking
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#image processing" title="image processing" rel="2">
+                                    image processing
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#c++" title="c++" rel="3">
+                                    c++
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#optical flow" title="optical flow" rel="1">
+                                    optical flow
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#presentation" title="presentation" rel="1">
+                                    presentation
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#thesis" title="thesis" rel="1">
+                                    thesis
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#B-spline" title="B-spline" rel="1">
+                                    B-spline
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#registration" title="registration" rel="1">
+                                    registration
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#SPIE" title="SPIE" rel="1">
+                                    SPIE
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#kmeans" title="kmeans" rel="1">
+                                    kmeans
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#machine learning" title="machine learning" rel="1">
+                                    machine learning
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#alibaba" title="alibaba" rel="1">
+                                    alibaba
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#interview" title="interview" rel="1">
+                                    interview
+                                </a>
+                            
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Short About -->
+                <section class="visible-md visible-lg">
+                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
+                    <div class="short-about">
+                        
+                            <img src="/img/avatar.jpg" />
+                        
+                        
+                            <p><br>Pingge Jiang <br><br>☑Coding <br> ☑Medical imaging  <br> ☑Image processing <br> ☑Machine learning <br></p>
+                        
+                        <!-- SNS Link -->
+                        <ul class="list-inline">
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li>
+                                <a target="_blank" href="https://www.facebook.com/pingge.jiang">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            <li>
+                                <a target="_blank" href="https://www.youtube.com/channel/UCnZQsOU24tHs8x8-c8NpZuA">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            <li>
+                                <a target="_blank" href="/img/icon_wechat.png">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-wechat fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            <li>
+                                <a target="_blank" href="https://www.linkedin.com/in/pingge-jiang-49bab2a9?trk=nav_responsive_tab_profile">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            <li>
+                                <a target="_blank" href="mailto:pijiang122@yahoo.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Friends Blog -->
+                
+    		</div>
+        
+	</div>
+</div>
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li>
+                                <a target="_blank" href="https://www.facebook.com/pingge.jiang">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            <li>
+                                <a target="_blank" href="https://www.youtube.com/channel/UCnZQsOU24tHs8x8-c8NpZuA">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            <li>
+                                <a target="_blank" href="/img/icon_wechat.png">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-wechat fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            <li>
+                                <a target="_blank" href="https://www.linkedin.com/in/pingge-jiang-49bab2a9?trk=nav_responsive_tab_profile">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            <li>
+                                <a target="_blank" href="mailto:pijiang122@yahoo.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+		
+			</ul>
+                </ul>
+                <p class="copyright text-muted">
+                · 这一生很短， 终将失去， 不妨大胆一些。爱一个人，追一次梦，不妨大胆一些 ·                    
+		<br>
+                        Pingge Jiang Copyright &copy; Pingge Jiang 2017 
+                    </p>
+                </div>
+            </div>
+        </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+<!-- Service Worker -->
+
+<script src="/js/snackbar.js "></script>
+<script src="/js/sw-registration.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async('/js/jquery.tagcloud.js',function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-108076720-1';
+    var _gaDomain = 'pinggejiang.com';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+<!-- Side Catalog -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

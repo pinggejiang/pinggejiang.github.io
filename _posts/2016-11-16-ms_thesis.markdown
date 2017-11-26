@@ -1,0 +1,58 @@
+---
+layout:     post
+title:      "Pedestrian detection and tracking algorithm (part1 2013) "
+subtitle:   ""
+date:       2017-02-15 05:29:00
+author:     "Pingge Jiang"
+header-img: "img/home-bg.jpg"
+catalog:    true
+categories: research
+tags:
+    - [image processing, tracking, presentation, thesis]
+
+---
+As part of my master's thesis work, more information available at:
+
+[A New Approach for Pedestrian Tracking and Status Analysis](http://docs.lib.purdue.edu/dissertations/AAI10154050/)
+![Alt](/img/post/ms_thesis/presentation_V5-01.png)
+![Alt](/img/post/ms_thesis/presentation_V5-02.png)
+![Alt](/img/post/ms_thesis/presentation_V5-03.png)
+![Alt](/img/post/ms_thesis/presentation_V5-04.png)
+![Alt](/img/post/ms_thesis/presentation_V5-05.png)
+![Alt](/img/post/ms_thesis/presentation_V5-06.png)
+![Alt](/img/post/ms_thesis/presentation_V5-07.png)
+![Alt](/img/post/ms_thesis/presentation_V5-08.png)
+![Alt](/img/post/ms_thesis/presentation_V5-09.png)
+![Alt](/img/post/ms_thesis/presentation_V5-10.png)
+![Alt](/img/post/ms_thesis/presentation_V5-11.png)
+![Alt](/img/post/ms_thesis/presentation_V5-12.png)
+![Alt](/img/post/ms_thesis/presentation_V5-13.png)
+![Alt](/img/post/ms_thesis/presentation_V5-14.png)
+![Alt](/img/post/ms_thesis/presentation_V5-15.png)
+![Alt](/img/post/ms_thesis/presentation_V5-16.png)
+![Alt](/img/post/ms_thesis/presentation_V5-17.png)
+![Alt](/img/post/ms_thesis/presentation_V5-18.png)
+![Alt](/img/post/ms_thesis/presentation_V5-19.png)
+![Alt](/img/post/ms_thesis/presentation_V5-20.png)
+![Alt](/img/post/ms_thesis/presentation_V5-21.png)
+![Alt](/img/post/ms_thesis/presentation_V5-22.png)
+![Alt](/img/post/ms_thesis/presentation_V5-23.png)
+![Alt](/img/post/ms_thesis/presentation_V5-24.png)
+![Alt](/img/post/ms_thesis/presentation_V5-25.png)
+![Alt](/img/post/ms_thesis/presentation_V5-26.png)
+![Alt](/img/post/ms_thesis/presentation_V5-27.png)
+![Alt](/img/post/ms_thesis/presentation_V5-28.png)
+![Alt](/img/post/ms_thesis/presentation_V5-29.png)
+![Alt](/img/post/ms_thesis/presentation_V5-30.png)
+![Alt](/img/post/ms_thesis/presentation_V5-31.png)
+![Alt](/img/post/ms_thesis/presentation_V5-32.png)
+![Alt](/img/post/ms_thesis/presentation_V5-33.png)
+![Alt](/img/post/ms_thesis/presentation_V5-34.png)
+![Alt](/img/post/ms_thesis/presentation_V5-35.png)
+![Alt](/img/post/ms_thesis/presentation_V5-36.png)
+![Alt](/img/post/ms_thesis/presentation_V5-37.png)
+![Alt](/img/post/ms_thesis/presentation_V5-38.png)
+![Alt](/img/post/ms_thesis/presentation_V5-39.png)
+![Alt](/img/post/ms_thesis/presentation_V5-40.png)
+![Alt](/img/post/ms_thesis/presentation_V5-41.png)
+

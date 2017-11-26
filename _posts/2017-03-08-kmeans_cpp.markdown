@@ -1,13 +1,14 @@
 ---
 layout:     post
-title:      "Simple implementation of Kmeans in C++ (Kmeans简单应用C++"
+title:      "Simple implementation of Kmeans in C++ (Kmeans简单应用C++)"
 subtitle:   ""
 date:       2017-03-08 11:10:00
 author:     "Pingge Jiang"
 header-img: "img/home-bg.jpg"
 catalog:    true
+categories: [research]
 tags:
-    - Coding
+    - [coding, c++, kmeans, machine learning]
 
 ---
 I finished it here to help anyone want to get familiar with it.

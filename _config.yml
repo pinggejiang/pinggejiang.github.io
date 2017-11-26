@@ -8,7 +8,7 @@ keyword: ""
 url: "https://pinggejiang.com"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
-
+categories_path: categories
 
 # SNS settings
 RSS: False

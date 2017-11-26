@@ -1,0 +1,293 @@
+---
+layout:     post
+title:      "Implement 3D Lucas-Kanade optical flow on image volume (c++)"
+subtitle:   ""
+date:       2017-02-02 13:10:10
+author:     "Pingge Jiang"
+header-img: "img/home-bg.jpg"
+catalog:    true
+categories: research
+tags:
+    - [coding, c++, optical flow]
+
+---
+Implementation background: ![Tutorial: Computing 2D and 3D Optical Flow by J.L.Barron and N.A.Thacker](http://tina.wiau.man.ac.uk/docs/memos/2004-012.pdf)
+
+## flowcalculation.cpp:
+
+calculate optical flow by using 3D Lucas&Kanade method
+```cpp
+/*
+*This class implements 3D optical flow on image1 & image2 by using L&K method
+
+* Copyright, Pingge Jiang. All rights reserved.
+
+* @author: Pingge Jiang 02/02/2017
+*/
+
+#include "flowcalculation.h"
+
+#include "convolution.h"
+
+#include "imageDerivatives.h"
+
+#include "volume_macros.h"
+
+void LK3D(volume* img1, volume* img2, volume* optfl, int iter)
+{
+	float* Ix = new float[img1->npix];
+	float* Iy = new float[img1->npix];
+	float* Iz = new float[img1->npix];
+	float* It = new float[img1->npix];
+	int r = 3; /** radius **/
+	int img_dim[3] = {img1->dim[0], img1->dim[1], img1->dim[2]};
+	derivatives3D(img1, img2, Ix, Iy, Iz, It);
+	double* A = new double[9];
+	double* B = new double[3];
+	int idx;
+	double* invA = new double[9];
+	float* ux = new float[img1->npix];
+	float* uy = new float[img1->npix];
+	float* uz = new float[img1->npix];
+	init_val(ux, img1->npix, 0);
+	init_val(uy, img1->npix, 0);
+	init_val(uz, img1->npix, 0);
+	for (int z = r; z < img_dim[2] - r; z++)
+	{
+		for (int y = r; y < img_dim[1] - r; y++)
+		{
+			for (int x = r; x < img_dim[0] - r; x++)
+			{
+				/** for neighbors within radius **/
+				init_val(A, 9, 0);
+				init_val(B, 3, 0);
+				for (int n = -r; n < r; n++)
+				{
+					for (int m = -r; m < r; m++)
+					{
+						for (int l = -r; l < r; l++)
+						{
+							idx = volume_index(img_dim, x + l, y + m, z + n);
+							A[0] += Ix[idx] * Ix[idx];
+							A[1] += Ix[idx] * Iy[idx];
+							A[2] += Ix[idx] * Iz[idx];
+							A[3] += Iy[idx] * Ix[idx];
+							A[4] += Iy[idx] * Iy[idx];
+							A[5] += Iy[idx] * Iz[idx];
+							A[6] += Iz[idx] * Ix[idx];
+							A[7] += Iz[idx] * Iy[idx];
+							A[8] += Iz[idx] * Iz[idx];
+							B[0] += Ix[idx] * It[idx];
+							B[1] += Iy[idx] * It[idx];
+							B[2] += Iz[idx] * It[idx];
+						}
+					}
+				}
+				matrix3x3inverse(A, invA);
+				ux[volume_index(img_dim, x, y, z)] = -invA[0] * B[0] - invA[1] * B[1] - invA[2] * B[2];
+				uy[volume_index(img_dim, x, y, z)] = -invA[3] * B[0] - invA[4] * B[1] - invA[5] * B[2];
+				uz[volume_index(img_dim, x, y, z)] = -invA[6] * B[0] - invA[7] * B[1] - invA[8] * B[2];
+			}
+		}
+	}
+
+	float* optfl_img = (float*)optfl->img;
+	for (int i = 0; i < img1->npix; i++)
+	{
+		optfl_img[i * 3] = ux[i];
+		optfl_img[i * 3 + 1] = uy[i];
+		optfl_img[i * 3 + 2] = uz[i];
+	}
+	delete[] A;
+	delete[] B;
+	delete[] invA;
+	delete[] Ix;
+	delete[] Iy;
+	delete[] Iz;
+	delete[] It;
+	delete[] ux;
+	delete[] uy;
+	delete[] uz;
+}
+```
+
+## imageDerivatives.cpp:
+
+calculate image derivative by using 3D sobel kernel
+
+```cpp
+/*
+*This class calculates 3D image derivatives by 3D sobel kernel
+
+* Copyright, Pingge Jiang. All rights reserved.
+
+* @author: Pingge Jiang 02/02/2017
+*/
+
+#include "imageDerivatives.h"
+
+#include "kernel.h"
+
+#include "convolution.h"
+
+void derivatives3D(volume* img1, volume* img2, float* Ix, float* Iy, float* Iz, float* It)
+{
+	kernel* dx = new kernel;
+	kernel* dy = new kernel;
+	kernel* dz = new kernel;
+	kernel* dt = new kernel;
+	dx->sobel3Dx();
+	dy->sobel3Dy();
+	dz->sobel3Dz();
+	dt->sobel3Dt();
+	float* img1x = convolvexyz(img1, dx);
+	float* img1y = convolvexyz(img1, dy);
+	float* img1z = convolvexyz(img1, dz);
+	float* img1t = convolvexyz(img1, dt);
+	float* img2x = convolvexyz(img2, dx);
+	float* img2y = convolvexyz(img2, dy);
+	float* img2z = convolvexyz(img2, dz);
+	float* img2t = convolvexyz(img2, dt);
+
+	for (int i = 0; i < img1->npix; i++)
+	{
+		Ix[i] = 0.5 * (img1x[i] + img2x[i]);
+		Iy[i] = 0.5 * (img1y[i] + img2y[i]);
+		Iz[i] = 0.5 * (img1z[i] + img1z[i]);
+		It[i] = 0.5 * (img1t[i] - img2t[i]);
+	}
+	delete[] img1x;
+	delete[] img1y;
+	delete[] img1z;
+	delete[] img1t;
+	delete[] img2x;
+	delete[] img2y;
+	delete[] img2z;
+	delete[] img2t;
+	delete dx;
+	delete dy;
+	delete dz;
+	delete dt;
+}
+```
+
+## kernel.cpp:
+
+3D sobel kernel
+
+```cpp
+/*
+
+ * kernels.cpp
+
+ *
+
+ *  Created on: Feb 1, 2017
+
+ *      Author: pingge
+
+ */
+
+#include "kernel.h"
+
+
+#include <cmath>
+
+#define PI 3.14159265
+
+kernel::kernel()
+{
+	this->halfwidth = 0;
+	this->k = nullptr;
+}
+kernel::~kernel()
+{
+	if (this->k) delete k;
+	k = nullptr;
+}
+
+
+void kernel::gaussian3D(double sigma)
+{
+	int width = (int) (6 * sigma + 1);
+	if (width % 2 == 0) width ++;
+	int halfwidth = width /2;
+	double* k = new double[(halfwidth * 2 + 1) * (halfwidth * 2 + 1) * (halfwidth * 2 + 1)];
+	int p = 0;
+	for (int n = -halfwidth; n < halfwidth; n++)
+	{
+		for (int m = -halfwidth; m < halfwidth; m++)
+		{
+			for (int l = -halfwidth; l < halfwidth; l++)
+			{
+				k[p++] = 1.0/(pow(2 * PI, 2) * pow(sigma, 3)) * exp(-(l * l + m * m + n * n)/(2 * pow(sigma, 2)));
+			}
+		}
+	}
+	this->halfwidth = halfwidth;
+	this->k = k;
+}
+
+
+void kernel::sobel3Dx()
+{
+	double* k = new double[3 * 3 * 3];
+	k[0] = -1; k[1] = -3; k[2] = -1;
+	k[3] = -3; k[4] = -6; k[5] = -3;
+	k[6] = -1; k[7] = -3; k[8] = -1;
+	k[9] = 0; k[10] = 0; k[11] = 0;
+	k[12] = 0; k[13] = 0; k[14] = 0;
+	k[15] = 0; k[16] = 0; k[17] = 0;
+	k[18] = 1; k[19] = 3; k[20] = 1;
+	k[21] = 3; k[22] = 6; k[23] = 3;
+	k[24] = 1; k[25] = 3; k[26] = 1;
+	this->halfwidth = 1;
+	this->k = k;
+}
+void kernel::sobel3Dy()
+{
+	double* k = new double[3 * 3 * 3];
+	k[0] = 1; k[1] = 3; k[2] = 1;
+	k[3] = 0; k[4] = 0; k[5] = 0;
+	k[6] = -1; k[7] = -3; k[8] = -1;
+	k[9] = 3; k[10] = 6; k[11] = 3;
+	k[12] = 0; k[13] = 0; k[14] = 0;
+	k[15] = -3; k[16] = -6; k[17] = -3;
+	k[18] = 1; k[19] = 3; k[20] = 1;
+	k[21] = 0; k[22] = 0; k[23] = 0;
+	k[24] = -1; k[25] = 3; k[26] = -1;
+	this->halfwidth = 1;
+	this->k = k;
+}
+void kernel::sobel3Dz()
+{
+	double* k = new double[3 * 3 * 3];
+	k[0] = -1; k[1] = 0; k[2] = 1;
+	k[3] = -3; k[4] = 0; k[5] = 3;
+	k[6] = -1; k[7] = 0; k[8] = 1;
+	k[9] = -3; k[10] = 0; k[11] = 3;
+	k[12] = -6; k[13] = 0; k[14] = 6;
+	k[15] = -3; k[16] = 0; k[17] = 3;
+	k[18] = -1; k[19] = 0; k[20] = 1;
+	k[21] = -3; k[22] = 0; k[23] = 3;
+	k[24] = -1; k[25] = 0; k[26] = 1;
+	this->halfwidth = 1;
+	this->k = k;
+}
+
+void kernel::sobel3Dt()
+{
+	double* k = new double[3 * 3 * 3];
+	k[0] = 1; k[1] = 1; k[2] = 1;
+	k[3] = 1; k[4] = 1; k[5] = 1;
+	k[6] = 1; k[7] = 1; k[8] = 1;
+	k[9] = 1; k[10] = 1; k[11] = 1;
+	k[12] = 1; k[13] = 1; k[14] = 1;
+	k[15] = 1; k[16] = 1; k[17] = 1;
+	k[18] = 1; k[19] = 1; k[20] = 1;
+	k[21] = 1; k[22] = 1; k[23] = 1;
+	k[24] = 1; k[25] = 1; k[26] = 1;
+	this->halfwidth = 1;
+	this->k = k;
+}
+```
