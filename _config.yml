@@ -53,8 +53,8 @@ disqus_username: pinggejiang-github-io
 #ba_track_id: 283a9a301fa6a10cb71be600ec73eb39
 
 # Google Analytics
-ga_track_id: 'UA-108076720-1'            # Format: UA-xxxxxx-xx
-ga_domain: pinggejiang.com
+ga_track_id: 'UA-110188723-1'            # Format: UA-xxxxxx-xx
+ga_domain: pinggejiang.github.io
 
 
 
