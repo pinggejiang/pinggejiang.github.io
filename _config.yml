@@ -54,13 +54,13 @@ disqus_username: pinggejiang-github-io
 
 # Google Analytics
 ga_track_id: 'UA-110188723-1'            # Format: UA-xxxxxx-xx
-ga_domain: pinggejiang.github.io
+ga_domain: pinggejiang.com
 
 
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "<br>Pingge Jiang <br><br>PhD in Computer Engineering <br><br>☑Coding <br> ☑Medical imaging  <br> ☑Image processing <br> ☑Machine learning <br>"
+sidebar-about-description: "<br>Pingge Jiang <br><br>PhD in Computer Engineering <br><br>☑Coding <br> ☑Medical imaging  <br> ☑Image processing <br> ☑Machine learning <br> ☑Neural networks <br>"
 sidebar-avatar: /img/avatar.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
