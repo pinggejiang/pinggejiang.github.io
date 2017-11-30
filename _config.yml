@@ -10,6 +10,7 @@ baseurl: ""                             # for example, '/blog' if your blog host
 
 categories_path: categories
 
+
 # SNS settings
 RSS: False
 facebook_username:  pingge.jiang
@@ -30,7 +31,7 @@ anchorjs: true                          # if you want to customize anchor. check
 
 # Gems
 # from PR#40, to support local preview for Jekyll 3.0
-plugins: [jekyll-paginate]
+plugins: [jekyll-paginate, jekyll-seo-tag] 
 
 
 
