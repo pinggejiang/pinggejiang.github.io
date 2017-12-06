@@ -11,4 +11,4 @@ tags:
     - [defense, video]
 
 ---
-[![Last day as a student -- a video record for a PhD defense](/img/post/rajath_defense.png)](https://www.youtube.com/embed/0DE_RkOq9p8 "rajath defense")
+[![The last day as a student -- a video record for a PhD defense](/img/post/rajath_defense.png)](https://www.youtube.com/embed/s98zKioTWT4 "rajath defense")
