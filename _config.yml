@@ -5,9 +5,9 @@ header-img: img/home-bg.jpg
 email: pijiang1225@yahoo.com
 description: "I'm the King!"
 keyword: ""
-url: "https://pinggejiang.com"              # your host, for absolute URL
+url: "https://pinggejiang.github.io"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
-
+encoding: utf-8
 categories_path: categories
 
 
@@ -31,7 +31,7 @@ anchorjs: true                          # if you want to customize anchor. check
 
 # Gems
 # from PR#40, to support local preview for Jekyll 3.0
-plugins: [jekyll-paginate, jekyll-seo-tag] 
+plugins: [jekyll-paginate, jekyll-seo-tagi, jekyll-sitemap] 
 
 
 
