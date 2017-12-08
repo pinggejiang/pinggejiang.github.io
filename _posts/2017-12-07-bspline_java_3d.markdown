@@ -11,7 +11,7 @@ tags:
     - [B-spline, registration, java]
 
 ---
-A Java version for 3D B-spline registration on medical images(mha) is uploaded to my ![github repository](https://github.com/pinggejiang/bspline_java_3d).
+A Java version for 3D B-spline registration on medical images(mha) is uploaded to my [github repository](https://github.com/pinggejiang/bspline_java_3d).
 
 __Note: the code is for resarch use only, performance is not optimized__
 
@@ -20,29 +20,29 @@ It's a translated and simplified version from C++ project written by Dr. James A
 
 ### files included are:
 
-Bspline_main.java
-BSPLINE.java
-Bspline_optimize_data.java
-BSPLINE_Options.java
-Dev_Pointers_Bspline.java
-BSPLINE_Opts.java
-LBFGS.java
-BSPLINE_Parms.java
-Mcsrch.java
-BSPLINE_SCORE_CAL.java
-BSPLINE_Score.java
-Volume.java
-BSPLINE_State.java
-Volume_proc.java
-BSPLINE_Xform.java
-lbfgs_parameter_t.java
-mha_oper.java
+-Bspline_main.java
+-BSPLINE.java
+-Bspline_optimize_data.java
+-BSPLINE_Options.java
+-Dev_Pointers_Bspline.java
+-BSPLINE_Opts.java
+-LBFGS.java
+-BSPLINE_Parms.java
+-Mcsrch.java
+-BSPLINE_SCORE_CAL.java
+-BSPLINE_Score.java
+-Volume.java
+-BSPLINE_State.java
+-Volume_proc.java
+-BSPLINE_Xform.java
+-lbfgs_parameter_t.java
+-mha_oper.java
 
 
 ### usage:
-
+```
 javac Bspline_main.java
-
+```
 
 A more comprehensive implementation of 3D B-spline registration in C++ please find from the open source software ![plastimatch](http://plastimatch.org/)
 
