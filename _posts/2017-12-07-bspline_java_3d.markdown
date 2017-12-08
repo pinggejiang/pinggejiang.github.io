@@ -20,23 +20,23 @@ It's a translated and simplified version from C++ project written by Dr. James A
 
 ### files included are:
 
--Bspline_main.java
--BSPLINE.java
--Bspline_optimize_data.java
--BSPLINE_Options.java
--Dev_Pointers_Bspline.java
--BSPLINE_Opts.java
--LBFGS.java
--BSPLINE_Parms.java
--Mcsrch.java
--BSPLINE_SCORE_CAL.java
--BSPLINE_Score.java
--Volume.java
--BSPLINE_State.java
--Volume_proc.java
--BSPLINE_Xform.java
--lbfgs_parameter_t.java
--mha_oper.java
+- Bspline_main.java
+- BSPLINE.java
+- Bspline_optimize_data.java
+- BSPLINE_Options.java
+- Dev_Pointers_Bspline.java
+- BSPLINE_Opts.java
+- LBFGS.java
+- BSPLINE_Parms.java
+- Mcsrch.java
+- BSPLINE_SCORE_CAL.java
+- BSPLINE_Score.java
+- Volume.java
+- BSPLINE_State.java
+- Volume_proc.java
+- BSPLINE_Xform.java
+- lbfgs_parameter_t.java
+- mha_oper.java
 
 
 ### usage:
