@@ -4,7 +4,7 @@ title:      "Bspline image registration for 3D medical images in Java"
 subtitle:   ""
 date:       2017-12-07 06:55:00
 author:     "Pingge Jiang"
-header-img: "img/home-bg.jpg"
+header-img: "img/post/bspline_java.png"
 catalog:    true
 categories: research
 tags:
