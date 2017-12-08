@@ -13,9 +13,10 @@ tags:
 ---
 A Java version for 3D B-spline registration on medical images(mha) is uploaded to my [github repository](https://github.com/pinggejiang/bspline_java_3d).
 
-__Note: the code is for resarch use only, performance is not optimized__
+__Note: the code is for research use only, performance is not optimized__
 
-It's a translated and simplified version from C++ project written by Dr. James A. Shackleford from Drexel University. Implemention details please refer to
+It’s a translated and simplified version of C++ project written by Dr. James A. Shackleford from Drexel University. Implementation details please refer to
+
 #### Shackleford JA, Kandasamy N, Sharp GC. On developing B-spline registration algorithms for multi-core processors. Physics in medicine and biology. 2010 Oct 12;55(21):6329.
 
 ### files included are:
