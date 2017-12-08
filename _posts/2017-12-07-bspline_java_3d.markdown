@@ -45,7 +45,7 @@ It’s a translated and simplified version of C++ project written by Dr. James A
 javac Bspline_main.java
 ```
 
-A more comprehensive implementation of 3D B-spline registration in C++ please find from the open source software ![plastimatch](http://plastimatch.org/)
+A more comprehensive implementation of 3D B-spline registration in C++ please find from the open source software [Plastimatch](http://plastimatch.org/)
 
 #### Copyright reserved.
 
