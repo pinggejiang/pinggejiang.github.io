@@ -11,6 +11,7 @@ tags:
     - [B-spline, registration, CNN]
 
 ---
+[CNN Driven Sparse Multi-Level B-spline Image Registration](http://openaccess.thecvf.com/content_cvpr_2018/papers/Jiang_CNN_Driven_Sparse_CVPR_2018_paper.pdf)
 ![Alt](/img/post/sparse_registration/cnn_sparse_registration-01.png)
 ![Alt](/img/post/sparse_registration/cnn_sparse_registration-02.png)
 ![Alt](/img/post/sparse_registration/cnn_sparse_registration-03.png)
