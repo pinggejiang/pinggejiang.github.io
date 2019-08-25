@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Sparse B-spline image registration with CNNs (medical imaging, deep learning) "
+title:      "Sparse B-spline image registration with CNNs (image registration deep learning) "
 subtitle:   ""
 date:       2018-06-12 03:25:00
 author:     "Pingge Jiang"
